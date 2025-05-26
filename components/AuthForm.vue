@@ -16,7 +16,8 @@
                     v-model="state.password" type="password" :placeholder="signupForm ? 'Create a new password' : 'Enter your password'" />
             </UFormField>
         </div>
-        <UButton class="form-button" :label="signupForm ? 'Sign Up' : 'Log In'" type="submit" :loading="false" />
+        <UButton
+            class="form-button" :label="signupForm ? 'Sign Up' : 'Log In'" :icon="signupForm ? 'mdi:account-plus' : 'mdi:login'" type="submit" :loading="false" />
     </UForm>
 </template>
 
