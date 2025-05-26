@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxt/fonts",
     "@nuxt/eslint",
+    "@nuxtjs/supabase",
   ],
   css: ["~/assets/css/main.css"],
 });
