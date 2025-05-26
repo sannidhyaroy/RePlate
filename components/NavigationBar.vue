@@ -8,7 +8,7 @@
                 <NuxtLink to="/login">Login</NuxtLink>
             </li>
             <li>
-                <NuxtLink to="/register">Register</NuxtLink>
+                <NuxtLink to="/signup">Sign Up</NuxtLink>
             </li>
         </ul>
     </nav>
