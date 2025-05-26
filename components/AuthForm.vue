@@ -1,0 +1,74 @@
+<template>
+    <UForm :validate="validate" :state="state" class="auth-form" @submit="onSubmit">
+        <div v-if="signupForm" class="form-item name-field">
+            <UFormField label="Name" name="name" required>
+                <UInput v-model="state.name" type="text" placeholder="Enter your name" />
+            </UFormField>
+        </div>
+        <div class="form-item email-field">
+            <UFormField label="Email" name="email" required>
+                <UInput v-model="state.email" type="email" placeholder="Enter your email ID" />
+            </UFormField>
+        </div>
+        <div class="form-item password-field">
+            <UFormField label="Password" name="password" required>
+                <UInput
+                    v-model="state.password" type="password" :placeholder="signupForm ? 'Create a new password' : 'Enter your password'" />
+            </UFormField>
+        </div>
+        <UButton class="form-button" :label="signupForm ? 'Sign Up' : 'Log In'" type="submit" :loading="false" />
+    </UForm>
+</template>
+
+<script lang="ts" setup>
+import type { FormError, FormSubmitEvent } from '@nuxt/ui';
+
+defineProps({
+    signupForm: {
+        type: Boolean,
+        default: false
+    }
+});
+const state = reactive({
+    name: '',
+    email: '',
+    password: ''
+});
+
+const validate = (state: { name: string | null; email: string; password: string | null; }): FormError[] => {
+    const errors: FormError[] = [];
+    if (!state.name) {
+        errors.push({ name: 'name', message: 'Name is required' });
+    } else if (state.name.length < 3) {
+        errors.push({ name: 'name', message: 'Name must be at least 3 characters long' });
+    } else if (!state.email) {
+        errors.push({ name: 'email', message: 'Email is required' });
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email)) {
+        errors.push({ name: 'email', message: 'Invalid email format' });
+    } else if (!state.password) {
+        errors.push({ name: 'password', message: 'Password is required' });
+    } else if (state.password.length < 8) {
+        errors.push({ name: 'password', message: 'Password must be at least 8 characters long' });
+    }
+    return errors;
+}
+
+const toast = useToast();
+async function onSubmit(event: FormSubmitEvent<typeof state>) {
+    toast.add({
+        title: 'Success',
+        description: 'The form has been submitted successfully!',
+        color: 'success'
+    });
+    console.log(event.data);
+}
+
+</script>
+
+<style scoped>
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+</style>
