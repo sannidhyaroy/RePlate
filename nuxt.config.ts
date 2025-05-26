@@ -12,4 +12,12 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
   ],
   css: ["~/assets/css/main.css"],
+  supabase: {
+    redirectOptions: {
+      login: "/login",
+      callback: "/confirm",
+      exclude: ["/", "/login", "/signup", "/confirm"],
+      saveRedirectToCookie: true,
+    },
+  },
 });
