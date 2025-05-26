@@ -8,8 +8,8 @@
   <p>{{ tagline }}</p>
 
   <div class="card">
-    <NuxtLink to="/signup" class="signup-button button">Sign Up</NuxtLink>
-    <NuxtLink to="/login" class="login-button button">Login</NuxtLink>
+    <UButton to="/signup" class="signup-button button" variant="outline">Sign Up</UButton>
+    <UButton to="/login" class="login-button button" variant="outline">Login</UButton>
   </div>
 
   <p>
