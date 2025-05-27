@@ -1,4 +1,5 @@
 <template>
+    <UCard variant="subtle" class="auth-card">
     <UForm :validate="validate" :state="state" class="auth-form" @submit="onSubmit">
         <div v-if="signupForm" class="form-item name-field">
             <UFormField label="Name" name="name" required>
@@ -17,8 +18,9 @@
             </UFormField>
         </div>
         <UButton
-            class="form-button" :label="signupForm ? 'Sign Up' : 'Log In'" :icon="signupForm ? 'mdi:account-plus' : 'mdi:login'" type="submit" :loading="false" />
+                class="form-button" :label="signupForm ? 'Sign Up' : 'Log In'" :icon="signupForm ? 'mdi:account-plus' : 'mdi:login'" type="submit" :loading="loading" />
     </UForm>
+    </UCard>
 </template>
 
 <script lang="ts" setup>
