@@ -13,8 +13,8 @@
                     <USkeleton v-else class="w-full h-24" />
                 </div>
             </div>
-            <div class="recipe-details grid grid-cols-1 md:grid-cols-2 gap-10">
-                <UCard v-if="recipe.ingredients_array.length > 0" class="recipe-ingredients">
+            <div class="recipe-details grid grid-cols-1 md:grid-cols-5 gap-10">
+                <UCard v-if="recipe.ingredients_array.length > 0" class="recipe-ingredients md:col-span-2">
                     <template #header>
                         <h2 class="text-2xl font-bold">Ingredients</h2>
                     </template>
@@ -22,14 +22,14 @@
                         <li v-for="(ingredient, index) in recipe.ingredients_array" :key="index">{{ ingredient }}</li>
                     </ul>
                 </UCard>
-                <USkeleton v-else class="w-full h-96" />
-                <UCard v-if="recipe.instructions" class="recipe-instructions">
+                <USkeleton v-else class="w-full h-96 md:col-span-2" />
+                <UCard v-if="recipe.instructions" class="recipe-instructions md:col-span-3">
                     <template #header>
                         <h2 class="text-2xl font-bold">Instructions</h2>
                     </template>
                     <p>{{ recipe.instructions }}</p>
                 </UCard>
-                <USkeleton v-else class="w-full h-120" />
+                <USkeleton v-else class="w-full h-120 md:col-span-3" />
             </div>
             <div class="recipe-meta grid grid-cols-1 md:grid-cols-2 gap-10">
                 <UCard v-if="recipe.preparation_time" class="p-4">
