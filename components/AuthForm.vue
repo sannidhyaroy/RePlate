@@ -26,6 +26,7 @@
 <script lang="ts" setup>
 import type { FormError, FormSubmitEvent } from '@nuxt/ui';
 const supabase = useSupabaseClient();
+const router = useRouter();
 const toast = useToast();
 
 const props = defineProps({
@@ -87,6 +88,7 @@ const handleLogin = async () => {
             description: 'You\'re Logged In',
             color: 'success'
         });
+        router.push('/');
     }
     return data;
 }
@@ -111,7 +113,7 @@ const handleSignUp = async () => {
     } else {
         toast.add({
             title: 'Sign Up Successful!',
-            description: 'You\'re on board RePlate!',
+            description: 'Your account has been created. Please check your email for verification.',
             color: 'success'
         });
     }
