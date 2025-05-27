@@ -16,13 +16,13 @@
 
   <p>
     Check out the
-    <a href="https://github.com/sannidhyaroy/RePlate" target="_blank">GitHub repository</a>
+    <ULink to="https://github.com/sannidhyaroy/RePlate" target="_blank">GitHub repository</ULink>
     of {{ title }} to learn more.
   </p>
   <p class="license">
     {{ title }} is licensed under the
-    <a href="https://github.com/sannidhyaroy/RePlate/blob/main/LICENSE" target="_blank" class="license-link">GNU General
-      Public License (GPL) v3.0</a>
+    <ULink to="https://github.com/sannidhyaroy/RePlate/blob/main/LICENSE" target="_blank" class="license-link">GNU General
+      Public License (GPL) v3.0</ULink>
     license.
   </p>
 </template>
