@@ -6,10 +6,15 @@
             <UCard class="p-4" variant="subtle">
                 <h2 class="text-2xl font-bold mb-4">Find Recipes with Your Ingredients</h2>
                 <p class="mb-4">Enter the ingredients you have at home to find recipes that you can make.</p>
-                <multiselect
-                    v-model="selectedIngredients" :options="options" tag-placeholder="Add new ingredient"
-                    label="name" placeholder="Add your leftover ingredients" track-by="id" :multiple="true"
-                    :taggable="true" @tag="addIngredient" />
+                <UButtonGroup class="w-full">
+                    <multiselect
+                        v-model="selectedIngredients" :options="options" tag-placeholder="Add new ingredient"
+                        label="name" placeholder="Add your leftover ingredients" track-by="id" :multiple="true"
+                        :taggable="true" @tag="addIngredient" />
+                    <UModal title="Recipe Ideas" description="Select any recipe to view details" :dismissible="false">
+                        <UButton label="Find Recipes" icon="i-lucide-search" size="xl" square />
+                    </UModal>
+                </UButtonGroup>
             </UCard>
         </div>
     </div>
@@ -29,4 +34,9 @@ const addIngredient = (newIngredient) => {
 
 </script>
 
-<style></style>
+<style>
+/* Vue Multiselect border radius */
+.multiselect__tags {
+    border-radius: calc(var(--ui-radius) * 1.5) 0 0 calc(var(--ui-radius) * 1.5);
+}
+</style>
