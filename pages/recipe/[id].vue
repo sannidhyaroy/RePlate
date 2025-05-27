@@ -33,21 +33,31 @@
                 <USkeleton v-else class="w-full h-120 md:col-span-3" />
             </div>
             <div class="recipe-meta grid grid-cols-1 md:grid-cols-2 gap-10">
-                <UCard v-if="recipe.preparation_time" class="p-4">
-                    <h2 class="text-xl font-bold mb-2">Preparation Time</h2>
-                    <p>{{ recipe.preparation_time }} minutes</p>
+                <UCard v-if="recipe.preparation_time || recipe.cooking_time || recipe.total_time" class="md:col-span-2">
+                    <div class="flex flex-col md:flex-row justify-between items-center text-center gap-4 md:gap-0">
+                        <div class="flex-1">
+                            <div class="text-lg font-bold">Preparation Time</div>
+                            <div class="text-3xl">{{ recipe.preparation_time || '-' }}
+                                <span v-if="recipe.preparation_time">min</span>
+                            </div>
+                        </div>
+                        <USeparator orientation="vertical" class="hidden md:block h-28 mx-4" />
+                        <div class="flex-1">
+                            <div class="text-lg font-bold">Cooking Time</div>
+                            <div class="text-3xl">{{ recipe.cooking_time || '-' }}
+                                <span v-if="recipe.cooking_time">min</span>
+                            </div>
+                        </div>
+                        <USeparator orientation="vertical" class="hidden md:block h-28 mx-4" />
+                        <div class="flex-1">
+                            <div class="text-lg font-bold">Total Time</div>
+                            <div class="text-3xl">{{ recipe.total_time || '-' }}
+                                <span v-if="recipe.total_time">min</span>
+                            </div>
+                        </div>
+                    </div>
                 </UCard>
-                <USkeleton v-else class="w-full h-36" />
-                <UCard v-if="recipe.cooking_time" class="p-4">
-                    <h2 class="text-xl font-bold mb-2">Cooking Time</h2>
-                    <p>{{ recipe.cooking_time }} minutes</p>
-                </UCard>
-                <USkeleton v-else class="w-full h-36" />
-                <UCard v-if="recipe.total_time" class="p-4">
-                    <h2 class="text-xl font-bold mb-2">Total Time</h2>
-                    <p>{{ recipe.total_time }} minutes</p>
-                </UCard>
-                <USkeleton v-else class="w-full h-36" />
+                <USkeleton v-else class="w-full h-45 md:col-span-2" />
                 <UCard v-if="recipe.servings" class="p-4">
                     <h2 class="text-xl font-bold mb-2">Servings</h2>
                     <p>{{ recipe.servings }}</p>
