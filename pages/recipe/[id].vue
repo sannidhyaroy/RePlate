@@ -18,8 +18,9 @@
                     <template #header>
                         <h2 class="text-2xl font-bold">Ingredients</h2>
                     </template>
-                    <ul class="list-disc pl-5">
-                        <li v-for="(ingredient, index) in recipe.ingredients_array" :key="index">{{ ingredient }}</li>
+                    <ul class="list-disc list-inside">
+                        <li v-for="(ingredient, index) in recipe.ingredients_array" :key="index" class="my-1 py-1">{{
+                            ingredient }}</li>
                     </ul>
                 </UCard>
                 <USkeleton v-else class="w-full h-96 md:col-span-2" />
@@ -27,7 +28,7 @@
                     <template #header>
                         <h2 class="text-2xl font-bold">Instructions</h2>
                     </template>
-                    <p>{{ recipe.instructions }}</p>
+                    <p class="my-1 py-1">{{ recipe.instructions }}</p>
                 </UCard>
                 <USkeleton v-else class="w-full h-120 md:col-span-3" />
             </div>
