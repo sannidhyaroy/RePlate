@@ -18,7 +18,7 @@
                 </UFormField>
             </div>
             <UButton
-                class="form-button" :label="signupForm ? 'Sign Up' : 'Log In'" :icon="signupForm ? 'mdi:account-plus' : 'mdi:login'" type="submit" :loading="loading" />
+                class="form-button" :label="signupForm ? 'Sign Up' : 'Log In'" :icon="signupForm ? 'mdi:account-plus' : 'mdi:login'" type="submit" :loading="loading" loading-icon="i-lucide-loader" />
         </UForm>
     </UCard>
 </template>
