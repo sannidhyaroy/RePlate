@@ -8,8 +8,10 @@
   <p>{{ tagline }}</p>
 
   <div class="card">
-    <UButton to="/signup" class="signup-button button" variant="outline">Sign Up</UButton>
-    <UButton to="/login" class="login-button button" variant="outline">Login</UButton>
+    <UButton to="/signup" class="signup-button button">Sign Up</UButton>
+    <UButton
+      to="/login" class="login-button button" color="neutral" trailing-icon="i-lucide-arrow-right" variant="subtle">Login
+    </UButton>
   </div>
 
   <p>
