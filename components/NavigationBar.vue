@@ -1,5 +1,12 @@
 <template>
-    <UNavigationMenu :items="items" class="w-full justify-end" highlight />
+    <div class="header-content flex justify-between items-center m-2 px-4">
+        <NuxtLink to="/" class="header-left">
+            <NuxtImg src="logo.png" alt="logo" class="logo w-1/5" />
+        </NuxtLink>
+        <div class="header-right">
+            <UNavigationMenu :items="items" highlight />
+        </div>
+    </div>
 </template>
 
 <script lang="ts" setup>
