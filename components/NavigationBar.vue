@@ -38,6 +38,12 @@ const items = computed<NavigationMenuItem[][]>(() => [
             to: 'https://github.com/sannidhyaroy/RePlate',
             target: '_blank',
         },
+        {
+            label: 'Help',
+            icon: 'i-lucide-help-circle',
+            to: 'https://github.com/sannidhyaroy/RePlate/blob/main/README.md',
+            target: '_blank',
+        },
     ]
 ]);
 watch(user, () => {
