@@ -1,7 +1,24 @@
 <template>
-    <div class="page-title m-4 p-4">
+    <div class="page-container m-4 p-4">
         <h1 class="font-bold text-5xl">Dashboard</h1>
         <USeparator class="my-4" color="primary" />
+        <UContainer class="flex flex-col gap-4">
+            <UCard class="p-4" variant="subtle">
+                <h2 class="text-2xl font-bold mb-4">Welcome to your Dashboard</h2>
+                <p class="mb-4">Here you can manage your account, view your activity, and access various features.</p>
+                <UButton to="/profile" leading-icon="i-lucide-user" class="mr-2" color="primary">
+                    View Profile
+                </UButton>
+            </UCard>
+            <UCard class="p-4" variant="subtle">
+                <h2 class="text-2xl font-bold mb-4">RePlate your leftovers</h2>
+                <p class="mb-4">You can reduce your food wastage by searching for recipes that utilize your leftovers.
+                </p>
+                <UButton to="/search-by-ingredient" leading-icon="i-lucide-scan-search" class="mr-2" color="primary">
+                    Search Recipes
+                </UButton>
+            </UCard>
+        </UContainer>
     </div>
 </template>
 
