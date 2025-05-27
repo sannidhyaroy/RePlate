@@ -26,5 +26,7 @@ if (!user.value) {
 </script>
 
 <template>
-    <div>We're logging you out...</div>
+    <div class="flex flex-col items-center justify-center">
+        <h1>We're logging you out...</h1>
+    </div>
 </template>
