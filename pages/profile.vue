@@ -130,9 +130,3 @@ function submitComment() {
   comment.value = ''
 }
 </script>
-
-<style scoped>
-.page-container {
-  background-color: #0f172a;
-}
-</style>
