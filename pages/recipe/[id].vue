@@ -15,15 +15,21 @@
             <!-- Recipe meta information: times, servings, cuisine, etc. -->
             <RecipeMeta :recipe="recipe" :loading="loading" />
         </div>
+        <div class="flex flex-col items-center justify-center w-full m-6 p-4">
+            <UPagination v-model:page="page" :total="pageTotal" items-per-page="1" size="xl" active-variant="subtle" />
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 const supabase = useSupabaseClient();
 const toast = useToast();
+const router = useRouter();
 const { id } = useRoute().params;
 const recipe = ref(null);
 const loading = ref(true);
+const page = ref(Number(id)) || 1;
+const pageTotal = ref(6871);
 
 const showErrorAlert = (message) => {
     toast.add({
@@ -50,6 +56,10 @@ const fetchRecipe = async () => {
         loading.value = false;
     }
 }
+
+watch(page, (newPage) => {
+    router.push(`/recipe/${newPage}`)
+}, { immediate: true });
 
 onMounted(() => {
     fetchRecipe();
