@@ -1,84 +1,19 @@
 <template>
+    <!-- Main container for the recipe page -->
     <div class="page-container m-4 py-6 px-10">
+        <!-- Recipe ID header -->
         <h1 class="font-bold text-5xl">Recipe #{{ id }}</h1>
         <USeparator class="my-4" color="primary" />
         <div class="flex flex-col gap-10">
-            <div class="recipe-info flex flex-col gap-4">
-                <div class="recipe-title">
-                    <h1 v-if="recipe.name" class="text-3xl font-bold">{{ recipe.name }}</h1>
-                    <USkeleton v-else class="w-full h-12" />
-                </div>
-                <div class="recipe-description">
-                    <p v-if="recipe.description" class="text-base">{{ recipe.description }}</p>
-                    <USkeleton v-else class="w-full h-24" />
-                </div>
-            </div>
+            <!-- Recipe title and description section -->
+            <RecipeTitle :recipe="recipe" />
+            <!-- Recipe details: ingredients and instructions -->
             <div class="recipe-details grid grid-cols-1 md:grid-cols-5 gap-10">
-                <UCard v-if="recipe.ingredients_array.length > 0" class="recipe-ingredients md:col-span-2">
-                    <template #header>
-                        <h2 class="text-2xl font-bold">Ingredients</h2>
-                    </template>
-                    <ul class="list-disc list-inside">
-                        <li v-for="(ingredient, index) in recipe.ingredients_array" :key="index" class="my-1 py-1">{{
-                            ingredient }}</li>
-                    </ul>
-                </UCard>
-                <USkeleton v-else class="w-full h-96 md:col-span-2" />
-                <UCard v-if="recipe.instructions" class="recipe-instructions md:col-span-3">
-                    <template #header>
-                        <h2 class="text-2xl font-bold">Instructions</h2>
-                    </template>
-                    <p class="my-1 py-1">{{ recipe.instructions }}</p>
-                </UCard>
-                <USkeleton v-else class="w-full h-120 md:col-span-3" />
+                <RecipeIngredients :recipe="recipe" />
+                <RecipeInstructions :recipe="recipe" />
             </div>
-            <div class="recipe-meta grid grid-cols-1 md:grid-cols-2 gap-10">
-                <UCard v-if="recipe.preparation_time || recipe.cooking_time || recipe.total_time" class="md:col-span-2">
-                    <div class="flex flex-col md:flex-row justify-between items-center text-center gap-4 md:gap-0">
-                        <div class="flex-1">
-                            <div class="text-lg font-bold">Preparation Time</div>
-                            <div class="text-3xl">{{ recipe.preparation_time || '-' }}
-                                <span v-if="recipe.preparation_time">min</span>
-                            </div>
-                        </div>
-                        <USeparator orientation="vertical" class="hidden md:block h-28 mx-4" />
-                        <div class="flex-1">
-                            <div class="text-lg font-bold">Cooking Time</div>
-                            <div class="text-3xl">{{ recipe.cooking_time || '-' }}
-                                <span v-if="recipe.cooking_time">min</span>
-                            </div>
-                        </div>
-                        <USeparator orientation="vertical" class="hidden md:block h-28 mx-4" />
-                        <div class="flex-1">
-                            <div class="text-lg font-bold">Total Time</div>
-                            <div class="text-3xl">{{ recipe.total_time || '-' }}
-                                <span v-if="recipe.total_time">min</span>
-                            </div>
-                        </div>
-                    </div>
-                </UCard>
-                <USkeleton v-else class="w-full h-45 md:col-span-2" />
-                <UCard v-if="recipe.servings" class="p-4">
-                    <h2 class="text-xl font-bold mb-2">Servings</h2>
-                    <p>{{ recipe.servings }}</p>
-                </UCard>
-                <USkeleton v-else class="w-full h-36" />
-                <UCard v-if="recipe.cuisine" class="p-4">
-                    <h2 class="text-xl font-bold mb-2">Cuisine</h2>
-                    <p>{{ recipe.cuisine }}</p>
-                </UCard>
-                <USkeleton v-else class="w-full h-36" />
-                <UCard v-if="recipe.course" class="p-4">
-                    <h2 class="text-xl font-bold mb-2">Course</h2>
-                    <p>{{ recipe.course }}</p>
-                </UCard>
-                <USkeleton v-else class="w-full h-36" />
-                <UCard v-if="recipe.diet" class="p-4">
-                    <h2 class="text-xl font-bold mb-2">Diet</h2>
-                    <p>{{ recipe.diet }}</p>
-                </UCard>
-                <USkeleton v-else class="w-full h-36" />
-            </div>
+            <!-- Recipe meta information: times, servings, cuisine, etc. -->
+            <RecipeMeta :recipe="recipe" />
         </div>
     </div>
 </template>
