@@ -105,7 +105,7 @@ onMounted(() => {
   animateCount(contributed.value, animatedContributed)
 })
 
-function animateCount(target: number, refVar: any) {
+function animateCount(target: number, refVar: number) {
   let count = 0
   const interval = setInterval(() => {
     count++
