@@ -78,26 +78,20 @@
       </div>
     </div>
   </div>
-  <UCard>
-    <div class="text-[13px] flex justify-start">
-      <div class="mr-2.5">
-        <p>
-          Check out the
-          <ULink to="https://github.com/sannidhyaroy/RePlate" target="_blank">GitHub repository</ULink>
-          of {{ title }} to learn more.
-        </p>
-      </div>
-    </div>
-    <div class="text-[13px]">
-      <p class="license">
-        {{ title }} is licensed under the
-        <ULink to="https://github.com/sannidhyaroy/RePlate/blob/main/LICENSE" target="_blank" class="license-link">GNU
-          General
-          Public License (GPL) v3.0</ULink>
-        license.
-      </p>
-    </div>
-  </UCard>
+  <div class="footer flex flex-col items-center text-center my-10 p-2">
+    <h3 class="text-base">
+      Check out the
+      <ULink to="https://github.com/sannidhyaroy/RePlate" target="_blank">GitHub repository</ULink>
+      of {{ title }} to learn more.
+    </h3>
+    <h5 class="license text-lg">
+      {{ title }} is licensed under the
+      <ULink to="https://github.com/sannidhyaroy/RePlate/blob/main/LICENSE" target="_blank" class="license-link">GNU
+        General
+        Public License (GPL) v3.0</ULink>
+      license.
+    </h5>
+  </div>
 </template>
 
 <script lang="ts" setup>
