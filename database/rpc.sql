@@ -2,7 +2,7 @@
 CREATE OR REPLACE FUNCTION get_recipe_by_id(recipe_id integer)
 RETURNS TABLE (
     id integer,
-    name text,
+    name varchar(255),
     description text,
     ingredients_array text[],
     instructions text,
@@ -10,17 +10,20 @@ RETURNS TABLE (
     cooking_time int,
     total_time int,
     servings int,
-    cuisine text,
-    course text,
-    diet text,
+    cuisine varchar(100),
+    course varchar(100),
+    diet varchar(100),
     created_at timestamp
 ) AS $$
 BEGIN
     RETURN QUERY
     SELECT 
-        id, name, description, ingredients_array, instructions, preparation_time, cooking_time, total_time, servings, cuisine, course, diet, created_at
+        recipes.id, recipes.name, recipes.description, recipes.ingredients_array, 
+        recipes.instructions, recipes.preparation_time, recipes.cooking_time, 
+        recipes.total_time, recipes.servings, recipes.cuisine, recipes.course, 
+        recipes.diet, recipes.created_at
     FROM recipes
-    WHERE id = recipe_id;
+    WHERE recipes.id = recipe_id;
 END;
 $$ LANGUAGE plpgsql STABLE;
 
