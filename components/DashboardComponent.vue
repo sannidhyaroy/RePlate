@@ -23,7 +23,20 @@
 </template>
 
 <script lang="ts" setup>
+const min = 1;
+const max = 6871;
+function item_no(): number{
+    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+}
+const minCeiled: number = Math.ceil(min);
+const maxFloored: number = Math.floor(max);
+const recepieId: number = [];
+if(process.client){
+    for(let i = 0; i < 10; i++){
+        recepieId.push(item_no())
+        console.log(recepieId[i])
+    }
+}
 
 </script>
-
 <style></style>
