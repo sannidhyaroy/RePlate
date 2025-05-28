@@ -1,5 +1,7 @@
 <template>
-    <UCard v-if="!loading" class="recipe-ingredients md:col-span-2">
+    <UCard
+        v-if="!loading" class="recipe-ingredients md:col-span-2" :variant="hovered ? 'subtle' : 'outline'"
+        @mouseenter="hovered = true" @mouseleave="hovered = false">
         <template #header>
             <h2 class="text-2xl font-bold">Ingredients</h2>
         </template>
@@ -13,4 +15,5 @@
 
 <script setup lang="ts">
 defineProps<{ recipe, loading }>();
+const hovered = ref(false);
 </script>
