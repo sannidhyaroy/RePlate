@@ -1,31 +1,60 @@
 <template>
-    <nav class="navigation-bar">
-            <div style="display: flex; justify-content: start; align-items: center; margin:10px">
-                <div style="margin-right: 30px">
-                    <NuxtLink to="/">Home</NuxtLink>
-                </div>
-                <div style="margin-right:30px">
-                    <UInput placeholder="Search Recepies ..." />
-                </div>
-
-                <!-- auth buttons-->
-                <div v-if="!user" style="display:flex;">
-                    <div class="login-link" style="margin-right: 10px">
-                        <NuxtLink to="/login">Login</NuxtLink>
-                    </div>
-                    <div class="signup-link">
-                        <NuxtLink to="/signup">Sign Up</NuxtLink>                        
-                    </div>
-                </div>
-                <div v-else class="logout-link">
-                        <NuxtLink to="/logout">Log Out</NuxtLink>
-                </div>    
-            </div>
-    </nav>
+    <div class="header-content flex justify-between items-center m-2 px-4">
+        <NuxtLink to="/" class="header-left">
+            <NuxtImg src="logo.png" alt="logo" class="logo w-1/5" />
+        </NuxtLink>
+        <div class="header-right">
+            <UNavigationMenu :items="items" highlight />
+        </div>
+    </div>
 </template>
 
 <script lang="ts" setup>
 const user = useSupabaseUser();
+
+const authItems = computed<NavigationMenuItem>(() =>
+    !user.value ? [{
+        label: 'Sign Up',
+        to: '/signup',
+        icon: 'i-lucide-user-plus',
+    },
+    {
+        label: 'Log In',
+        to: '/login',
+        icon: 'i-lucide-log-in',
+    }] : [{
+        label: 'Log Out',
+        to: '/logout',
+        icon: 'i-lucide-log-out',
+    },
+    ]
+);
+const items = computed<NavigationMenuItem[][]>(() => [
+    [
+        {
+            label: 'Home',
+            to: '/',
+            icon: 'i-lucide-house',
+        },
+    ],
+    authItems.value,
+    [
+        {
+            label: 'GitHub',
+            icon: 'i-lucide-github',
+            to: 'https://github.com/sannidhyaroy/RePlate',
+            target: '_blank',
+        },
+        {
+            label: 'Help',
+            icon: 'i-lucide-help-circle',
+            to: 'https://github.com/sannidhyaroy/RePlate/blob/main/README.md',
+            target: '_blank',
+        },
+    ]
+]);
+watch(user, () => {
+}, { immediate: true });
+
 </script>
-<style>
-</style>
+<style></style>
