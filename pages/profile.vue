@@ -19,10 +19,10 @@
                     <p class="text-gray-400">{{ email || 'email here' }}</p>
                 </div>
                 <div class="flex gap-4 mt-2">
-                    <UButton variant="soft" class="bg-red-500 hover:bg-red-900 text-white" @click="changeDetails">Change
+                    <UButton variant="subtle" @click="changeDetails">Change
                         Details
                     </UButton>
-                    <UButton variant="soft" class="bg-red-500 hover:bg-red-900 text-white" @click="deleteAccount">Delete
+                    <UButton variant="subtle" color="error" @click="deleteAccount">Delete
                         Account
                     </UButton>
                 </div>
@@ -66,7 +66,7 @@
                     v-model="comment" class="w-full p-2 bg-transparent border border-green-400 rounded-md text-white" rows="4"
                     placeholder="Write your comment..."/>
                 <div class="flex justify-center mt-4">
-                    <UButton leading-icon="i-lucide-upload" class="mr-2" color="primary" @click="submitComment">SUBMIT
+                    <UButton leading-icon="i-lucide-upload" @click="submitComment">SUBMIT
                         COMMENT
                     </UButton>
                 </div>
