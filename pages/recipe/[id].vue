@@ -19,22 +19,40 @@
 </template>
 
 <script lang="ts" setup>
+const supabase = useSupabaseClient();
+const toast = useToast();
 const { id } = useRoute().params;
-const recipe = ref({
-    name: '',
-    description: '',
-    ingredients_array: [],
-    instructions: '',
-    preparation_time: '',
-    cooking_time: '',
-    total_time: '',
-    servings: '',
-    cuisine: '',
-    course: '',
-    diet: '',
-    created_at: ''
+const recipe = ref(null);
+const loading = ref(true);
+
+const showErrorAlert = (message) => {
+    toast.add({
+        title: 'Something went wrong!',
+        description: message,
+        color: 'error',
+        icon: 'i-lucide-badge-alert'
+    });
+}
+
+const fetchRecipe = async () => {
+    try {
+        loading.value = true;
+        const { data, err } = await supabase.rpc('get_recipe_by_id', { recipe_id: id });
+        if (err) throw rpcError;
+        if (data && data.length > 0) {
+            recipe.value = data[0];
+        } else {
+            showErrorAlert('This recipe likely does not exist');
+        }
+    } catch (error) {
+        showErrorAlert(error.message || 'Failed to fetch recipe');
+    } finally {
+        loading.value = false;
+    }
+}
+
+onMounted(() => {
+    fetchRecipe();
 });
 
 </script>
-
-<style></style>
