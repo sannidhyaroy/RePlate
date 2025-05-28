@@ -44,7 +44,7 @@
 
         <!-- Cooking History -->
         <div class="mt-10">
-            <h2 class="text-2xl font-bold mb-2">COOKING HISTORY</h2>
+            <h2 class="text-2xl font-bold mb-2">Cooking History</h2>
             <USeparator class="mb-4" color="primary" />
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <UCard
@@ -85,7 +85,7 @@ onMounted(() => {
     animateCount(contributed.value, animatedContributed)
 })
 
-function animateCount(target: number, refVar: number) {
+function animateCount(target: number, refVar: { value: number }) {
     let count = 0
     const interval = setInterval(() => {
         count++
