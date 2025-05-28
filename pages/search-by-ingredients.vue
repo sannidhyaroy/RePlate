@@ -13,6 +13,11 @@
                         :taggable="true" @tag="addIngredient" />
                     <UModal title="Recipe Ideas" description="Select any recipe to view details" :dismissible="false">
                         <UButton label="Find Recipes" icon="i-lucide-search" size="xl" square />
+                        <template #body>
+                            <SearchList
+                                :ingredients="selectedIngredients.map(i => i.name)"
+                                :search-function="searchFunction" />
+                        </template>
                     </UModal>
                 </UButtonGroup>
             </UCard>
@@ -23,6 +28,7 @@
 <script lang="ts" setup>
 const selectedIngredients = ref([]);
 const options = ref([]);
+const searchFunction = ref('search_recipes_exact');
 const addIngredient = (newIngredient) => {
     const ingredient = {
         name: newIngredient,
