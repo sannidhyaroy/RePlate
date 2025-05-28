@@ -1,7 +1,7 @@
 <template>
     <UCard
-        v-if="!loading" class="recipe-instructions md:col-span-3" :variant="hovered ? 'subtle' : 'outline'"
-        @mouseenter="hovered = true" @mouseleave="hovered = false">
+        v-if="!loading" class="recipe-instructions md:col-span-3 transition-all duration-900 ease-in-out"
+        :variant="hovered ? 'subtle' : 'outline'" @mouseenter="hovered = true" @mouseleave="hovered = false">
         <template #header>
             <h2 class="text-2xl font-bold">Instructions</h2>
         </template>

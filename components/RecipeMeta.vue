@@ -3,8 +3,9 @@
     <div class="recipe-meta grid grid-cols-1 md:grid-cols-2 gap-10">
         <!-- Card for time-related information: Preparation, Cooking, and Total Time -->
         <UCard
-            v-if="!loading" class="md:col-span-2" :variant="hovered.time ? 'subtle' : 'outline'"
-            @mouseenter="hovered.time = true" @mouseleave="hovered.time = false">
+            v-if="!loading" class="md:col-span-2 transition-all duration-900 ease-in-out"
+            :variant="hovered.time ? 'subtle' : 'outline'" @mouseenter="hovered.time = true"
+            @mouseleave="hovered.time = false">
             <div class="flex flex-col md:flex-row justify-between items-center text-center gap-4 md:gap-0">
                 <!-- Preparation Time -->
                 <div class="flex-1">
@@ -39,8 +40,9 @@
 
         <!-- Card for Servings -->
         <UCard
-            v-if="!loading" class="p-4" :variant="hovered.servings ? 'subtle' : 'outline'"
-            @mouseenter="hovered.servings = true" @mouseleave="hovered.servings = false">
+            v-if="!loading" class="p-4 transition-all duration-900 ease-in-out"
+            :variant="hovered.servings ? 'subtle' : 'outline'" @mouseenter="hovered.servings = true"
+            @mouseleave="hovered.servings = false">
             <h2 class="text-xl font-bold mb-2">Servings</h2>
             <p>{{ recipe.servings }}</p>
         </UCard>
@@ -48,8 +50,9 @@
 
         <!-- Card for Cuisine -->
         <UCard
-            v-if="!loading" class="p-4" :variant="hovered.cuisine ? 'subtle' : 'outline'"
-            @mouseenter="hovered.cuisine = true" @mouseleave="hovered.cuisine = false">
+            v-if="!loading" class="p-4 transition-all duration-900 ease-in-out"
+            :variant="hovered.cuisine ? 'subtle' : 'outline'" @mouseenter="hovered.cuisine = true"
+            @mouseleave="hovered.cuisine = false">
             <h2 class="text-xl font-bold mb-2">Cuisine</h2>
             <p>{{ recipe.cuisine }}</p>
         </UCard>
@@ -57,8 +60,9 @@
 
         <!-- Card for Course -->
         <UCard
-            v-if="!loading" class="p-4" :variant="hovered.course ? 'subtle' : 'outline'"
-            @mouseenter="hovered.course = true" @mouseleave="hovered.course = false">
+            v-if="!loading" class="p-4 transition-all duration-900 ease-in-out"
+            :variant="hovered.course ? 'subtle' : 'outline'" @mouseenter="hovered.course = true"
+            @mouseleave="hovered.course = false">
             <h2 class="text-xl font-bold mb-2">Course</h2>
             <p>{{ recipe.course }}</p>
         </UCard>
@@ -66,8 +70,9 @@
 
         <!-- Card for Diet -->
         <UCard
-            v-if="!loading" class="p-4" :variant="hovered.diet ? 'subtle' : 'outline'"
-            @mouseenter="hovered.diet = true" @mouseleave="hovered.diet = false">
+            v-if="!loading" class="p-4 transition-all duration-900 ease-in-out"
+            :variant="hovered.diet ? 'subtle' : 'outline'" @mouseenter="hovered.diet = true"
+            @mouseleave="hovered.diet = false">
             <h2 class="text-xl font-bold mb-2">Diet</h2>
             <p>{{ recipe.diet }}</p>
         </UCard>
