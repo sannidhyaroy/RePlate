@@ -2,7 +2,7 @@
     <!-- Main container for recipe meta information-->
     <div class="recipe-meta grid grid-cols-1 md:grid-cols-2 gap-10">
         <!-- Card for time-related information: Preparation, Cooking, and Total Time -->
-        <UCard v-if="recipe.preparation_time || recipe.cooking_time || recipe.total_time" class="md:col-span-2">
+        <UCard v-if="!loading" class="md:col-span-2">
             <div class="flex flex-col md:flex-row justify-between items-center text-center gap-4 md:gap-0">
                 <!-- Preparation Time -->
                 <div class="flex-1">
@@ -36,28 +36,28 @@
         <USkeleton v-else class="w-full h-45 md:col-span-2" />
 
         <!-- Card for Servings -->
-        <UCard v-if="recipe.servings" class="p-4">
+        <UCard v-if="!loading" class="p-4">
             <h2 class="text-xl font-bold mb-2">Servings</h2>
             <p>{{ recipe.servings }}</p>
         </UCard>
         <USkeleton v-else class="w-full h-36" />
 
         <!-- Card for Cuisine -->
-        <UCard v-if="recipe.cuisine" class="p-4">
+        <UCard v-if="!loading" class="p-4">
             <h2 class="text-xl font-bold mb-2">Cuisine</h2>
             <p>{{ recipe.cuisine }}</p>
         </UCard>
         <USkeleton v-else class="w-full h-36" />
 
         <!-- Card for Course -->
-        <UCard v-if="recipe.course" class="p-4">
+        <UCard v-if="!loading" class="p-4">
             <h2 class="text-xl font-bold mb-2">Course</h2>
             <p>{{ recipe.course }}</p>
         </UCard>
         <USkeleton v-else class="w-full h-36" />
 
         <!-- Card for Diet -->
-        <UCard v-if="recipe.diet" class="p-4">
+        <UCard v-if="!loading" class="p-4">
             <h2 class="text-xl font-bold mb-2">Diet</h2>
             <p>{{ recipe.diet }}</p>
         </UCard>
@@ -66,5 +66,5 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ recipe }>();
+defineProps<{ recipe, loading }>();
 </script>

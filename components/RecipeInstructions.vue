@@ -1,5 +1,5 @@
 <template>
-    <UCard v-if="recipe.instructions" class="recipe-instructions md:col-span-3">
+    <UCard v-if="!loading" class="recipe-instructions md:col-span-3">
         <template #header>
             <h2 class="text-2xl font-bold">Instructions</h2>
         </template>
@@ -9,5 +9,5 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ recipe }>();
+defineProps<{ recipe, loading }>();
 </script>

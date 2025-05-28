@@ -6,14 +6,14 @@
         <USeparator class="my-4" color="primary" />
         <div class="flex flex-col gap-10">
             <!-- Recipe title and description section -->
-            <RecipeTitle :recipe="recipe" />
+            <RecipeTitle :recipe="recipe" :loading="loading" />
             <!-- Recipe details: ingredients and instructions -->
             <div class="recipe-details grid grid-cols-1 md:grid-cols-5 gap-10">
-                <RecipeIngredients :recipe="recipe" />
-                <RecipeInstructions :recipe="recipe" />
+                <RecipeIngredients :recipe="recipe" :loading="loading" />
+                <RecipeInstructions :recipe="recipe" :loading="loading" />
             </div>
             <!-- Recipe meta information: times, servings, cuisine, etc. -->
-            <RecipeMeta :recipe="recipe" />
+            <RecipeMeta :recipe="recipe" :loading="loading" />
         </div>
     </div>
 </template>
