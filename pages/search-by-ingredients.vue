@@ -4,8 +4,9 @@
         <USeparator class="my-4" color="primary" />
         <div class="flex flex-col gap-4">
             <UCard class="p-4" variant="subtle">
-                <h2 class="text-2xl font-bold mb-4">Find Recipes with Your Ingredients</h2>
-                <p class="mb-4">Enter the ingredients you have at home to find recipes that you can make.</p>
+                <h2 class="text-2xl font-bold">Find Recipes with Your Ingredients</h2>
+                <p class="my-2">Enter the ingredients you have at home to find recipes that you can make.</p>
+                <USelect v-model="selectedSearchFunction" :items="searchFunctions" icon="i-lucide-filter" selected-icon="i-lucide-search" placeholder="Search Filter" size="xl" class="my-2" />
                 <UButtonGroup class="w-full">
                     <multiselect
                         v-model="selectedIngredients" :options="options" tag-placeholder="Add new ingredient"
@@ -16,7 +17,7 @@
                         <template #body>
                             <SearchList
                                 :ingredients="selectedIngredients.map(i => i.name)"
-                                :search-function="searchFunction" />
+                                :search-function="selectedSearchFunction" />
                         </template>
                     </UModal>
                 </UButtonGroup>
@@ -28,7 +29,21 @@
 <script lang="ts" setup>
 const selectedIngredients = ref([]);
 const options = ref([]);
-const searchFunction = ref('search_recipes_exact');
+const searchFunctions = ref([
+    {
+        label: 'Exact Match',
+        value: 'search_recipes_exact'
+    },
+    {
+        label: 'Loose Match',
+        value: 'search_recipes'
+    },
+    {
+        label: 'Optimal Match',
+        value: 'search_recipes_optimal'
+    }
+]);
+const selectedSearchFunction = ref('search_recipes_exact');
 const addIngredient = (newIngredient) => {
     const ingredient = {
         name: newIngredient,
