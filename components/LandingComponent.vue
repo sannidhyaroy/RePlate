@@ -82,7 +82,12 @@
             <img src="/public/Seafood-Noodles.png" class="rotating-double-dish1">
         </div>
         <div style="margin-top: 10%">
-          <UButton>SignUp / Login</UButton>
+          <UButton to="/signup" leading-icon="i-lucide-user-plus" class="mr-2" color="warning">
+            SignUp
+          </UButton>
+          <UButton to="/login" leading-icon="i-lucide-log-in" class="mr-2" color="warning">
+            Login
+          </UButton>
         </div>
         <div>
           <img src="/public/Seafood-Noodles.png" class="rotating-double-dish2"/>
