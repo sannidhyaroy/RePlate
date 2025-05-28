@@ -54,31 +54,12 @@
                 </UCard>
             </div>
         </div>
-
-
-
-        <!-- Leave a Comment -->
-        <div class="mt-10">
-            <h2 class="text-2xl font-bold mb-2">LEAVE A COMMENT</h2>
-            <USeparator class="mb-4" color="primary" />
-            <UCard class="p-4">
-                <textarea
-                    v-model="comment" class="w-full p-2 bg-transparent border border-green-400 rounded-md text-white" rows="4"
-                    placeholder="Write your comment..."/>
-                <div class="flex justify-center mt-4">
-                    <UButton leading-icon="i-lucide-upload" @click="submitComment">SUBMIT
-                        COMMENT
-                    </UButton>
-                </div>
-            </UCard>
-        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 const name = ref('')
 const email = ref('')
-const comment = ref('')
 const cooked = ref(0)
 const contributed = ref(0)
 const animatedCooked = ref(0)
@@ -123,9 +104,4 @@ function deleteAccount() {
     // Connect to Supabase to delete user
 }
 
-function submitComment() {
-    console.log('Comment submitted:', comment.value)
-    // Send to Supabase
-    comment.value = ''
-}
 </script>
