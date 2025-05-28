@@ -6,7 +6,7 @@
                     <h1 class="col-span-3 font-bold">{{ item.name }}</h1>
                     <div class="col-span-2 flex flex-col items-end">
                         <h3 class="text-xs">Match Score</h3>
-                        <p class="text-center">{{ item.relevance_score }}</p>
+                        <p class="text-center font-bold">{{ item.relevance_score }}</p>
                     </div>
                 </div>
             </template>
@@ -17,9 +17,9 @@
                     <p class="text-xs">Total Time</p>
                 </div>
                 <div class="grid grid-cols-3 gap-4 text-center">
-                    <h3>{{ item.preparation_time }} minutes</h3>
-                    <h3>{{ item.cooking_time }} minutes</h3>
-                    <h3>{{ item.total_time }} minutes</h3>
+                    <h3 class="font-semibold">{{ item.preparation_time }} minutes</h3>
+                    <h3 class="font-semibold">{{ item.cooking_time }} minutes</h3>
+                    <h3 class="font-semibold">{{ item.total_time }} minutes</h3>
                 </div>
             </template>
         </UCard>
