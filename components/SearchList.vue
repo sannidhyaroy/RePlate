@@ -20,6 +20,8 @@ const props = defineProps<{
     ingredients: string[];
 }>();
 
+const emit = defineEmits(['close-modal']);
+
 const fetchItems = async () => {
     try {
         loading.value = true;
@@ -28,6 +30,7 @@ const fetchItems = async () => {
         if (data && data.length > 0) {
             items.value = data;
         } else {
+            emit('close-modal');
             toast.add({
                 title: 'No items found',
                 description: 'There are no items matching your search criteria.',
@@ -35,7 +38,7 @@ const fetchItems = async () => {
             });
         }
     } catch (error) {
-        console.error('Error fetching search items:', error);
+        emit('close-modal');
         toast.add({
             title: 'We were unable to fetch search items',
             description: error.message || 'An error occurred while fetching search items.',

@@ -6,18 +6,22 @@
             <UCard class="p-4" variant="subtle">
                 <h2 class="text-2xl font-bold">Find Recipes with Your Ingredients</h2>
                 <p class="my-2">Enter the ingredients you have at home to find recipes that you can make.</p>
-                <USelect v-model="selectedSearchFunction" :items="searchFunctions" icon="i-lucide-filter" selected-icon="i-lucide-search" placeholder="Search Filter" size="xl" class="my-2" />
+                <USelect
+                    v-model="selectedSearchFunction" :items="searchFunctions" icon="i-lucide-filter"
+                    selected-icon="i-lucide-search" placeholder="Search Filter" size="xl" class="my-2" />
                 <UButtonGroup class="w-full">
                     <multiselect
                         v-model="selectedIngredients" :options="options" tag-placeholder="Add new ingredient"
                         label="name" placeholder="Add your leftover ingredients" track-by="id" :multiple="true"
                         :taggable="true" @tag="addIngredient" />
-                    <UModal title="Recipe Ideas" description="Select any recipe to view details" :dismissible="false">
+                    <UModal
+                        v-model:open="modalOpen" title="Recipe Ideas"
+                        description="Select any recipe to view details" :dismissible="false">
                         <UButton label="Find Recipes" icon="i-lucide-search" size="xl" square />
                         <template #body>
                             <SearchList
                                 :ingredients="selectedIngredients.map(i => i.name)"
-                                :search-function="selectedSearchFunction" />
+                                :search-function="selectedSearchFunction" @close-modal="modalOpen = false" />
                         </template>
                     </UModal>
                 </UButtonGroup>
@@ -27,6 +31,7 @@
 </template>
 
 <script lang="ts" setup>
+const modalOpen = ref(false);
 const selectedIngredients = ref([]);
 const options = ref([]);
 const searchFunctions = ref([
