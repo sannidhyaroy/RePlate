@@ -23,20 +23,39 @@
 </template>
 
 <script lang="ts" setup>
+const supabase = useSupabaseClient();
+const loading = ref(true);
+
 const min = 1;
 const max = 6871;
+
+// generate 10 recipe id's
 function item_no(): number{
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 const minCeiled: number = Math.ceil(min);
 const maxFloored: number = Math.floor(max);
-const recepieId: number = [];
+const recipeId: number[] = [];
 if(process.client){
     for(let i = 0; i < 10; i++){
-        recepieId.push(item_no())
-        console.log(recepieId[i])
+        recipeId.push(item_no())
     }
 }
 
+const fetchRecipe = async (Id) => {
+    try {
+        loading.value = true;
+        const { data, err } = await supabase.rpc('get_recipe_by_id', { recipe_id: Id });
+        if (err) throw rpcError;
+        if (data && data.length > 0) {
+            return data;
+        } 
+    } catch (error) {
+        showErrorAlert(error.message || 'Failed to fetch recipe');
+    } finally {
+        loading.value = false;
+    }
+}
+console.log(fetchRecipe(recipeId[0]));
 </script>
 <style></style>
