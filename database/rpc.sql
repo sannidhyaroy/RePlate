@@ -30,8 +30,12 @@ $$ LANGUAGE plpgsql STABLE;
 -- RPC: Exact match search for recipes with all specified ingredients
 CREATE OR REPLACE FUNCTION search_recipes_exact(ingredients text[])
 RETURNS TABLE (
-    name text,
+    id integer,
+    name varchar(255),
     ingredients_array text[],
+    preparation_time int,
+    cooking_time int,
+    total_time int,
     relevance_score real
 ) AS $$
 DECLARE
@@ -40,7 +44,7 @@ BEGIN
     -- Join ingredients with ' & ' for exact match
     query_str := array_to_string(ingredients, ' & ');
     RETURN QUERY
-    SELECT name, ingredients_array, ts_rank(ingredients_tsvector, to_tsquery('english', query_str))
+    SELECT recipes.id, recipes.name, recipes.ingredients_array, recipes.preparation_time, recipes.cooking_time, recipes.total_time, ts_rank(ingredients_tsvector, to_tsquery('english', query_str))
     FROM recipes
     WHERE ingredients_tsvector @@ to_tsquery('english', query_str)
     ORDER BY ts_rank(ingredients_tsvector, to_tsquery('english', query_str)) DESC;
@@ -48,10 +52,14 @@ END;
 $$ LANGUAGE plpgsql STABLE;
 
 -- RPC: Fuzzy match search for recipes with any of the specified ingredients
-CREATE OR REPLACE FUNCTION search_recipes_fuzzy(ingredients text[])
+CREATE OR REPLACE FUNCTION search_recipes(ingredients text[])
 RETURNS TABLE (
-    name text,
+    id integer,
+    name varchar(255),
     ingredients_array text[],
+    preparation_time int,
+    cooking_time int,
+    total_time int,
     relevance_score real
 ) AS $$
 DECLARE
@@ -60,7 +68,7 @@ BEGIN
     -- Join ingredients with ' | ' for fuzzy match
     query_str := array_to_string(ingredients, ' | ');
     RETURN QUERY
-    SELECT name, ingredients_array, ts_rank(ingredients_tsvector, to_tsquery('english', query_str))
+    SELECT recipes.id, recipes.name, recipes.ingredients_array, recipes.preparation_time, recipes.cooking_time, recipes.total_time, ts_rank(ingredients_tsvector, to_tsquery('english', query_str))
     FROM recipes
     WHERE ingredients_tsvector @@ to_tsquery('english', query_str)
     ORDER BY ts_rank(ingredients_tsvector, to_tsquery('english', query_str)) DESC;
@@ -68,9 +76,9 @@ END;
 $$ LANGUAGE plpgsql STABLE;
 
 -- RPC: Fuzzy Search for recipes with minimum extra ingredients
-CREATE OR REPLACE FUNCTION search_recipes_fuzzy_min_extra(ingredients text[])
+CREATE OR REPLACE FUNCTION search_recipes_optimal(ingredients text[])
 RETURNS TABLE (
-    name text,
+    name varchar(255),
     ingredients_array text[],
     total_ingredients int,
     matching_ingredients int,
