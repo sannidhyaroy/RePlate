@@ -1,19 +1,28 @@
 <template>
   <div class="landing-container">
-    <div class="font-serif text-8xl " style="text-align: center; margin-bottom: 1rem;">
-      {{ title }}
-    </div>
-    <div style="text-align: center">
+    <div style="display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      "
+      >
+      <div class="title-container">
+        {{ title }}
+      </div>
+      
       <div class="typing-effect">
         <b>{{ tagline }}</b>
       </div>
+
       <div class="about-container">
         <p>{{ about }}</p>
       </div>
+
     </div>
+    
 
   
-  <!-- contribute button -->
+    <!-- contribute button -->
     <div style="display:flex; justify-content:center; margin:20px">
       <div style="margin-right: 40px" class="cook">
         <UButton class="font-bold rounded-full" color='error' variant="subtle" size="xl">
@@ -42,44 +51,46 @@
       </UCarousel>
     </div>
 
-  <!-- images -->
-    <div class="pizza-container">
-      <img src="/public/pizza.png" alt="Rotating Pizza" class="rotating-pizza" />
-      <div style="margin-right: 50px; font-size:50px">
-        <div>
-          <b>DO YOU HAVE ANY</b>
-        </div>
-        <div>
-          <b>LEFTOVER INGREDIENTS</b>
-        </div>
-      </div>
-    </div>
 
-    <div class="chickenDish-container">
-      <div style="margin-left: 50px; font-size:50px">
+    <!-- rotation images -->
+    <div class="parent-food" >
+      <div class="pizza-container">
+        <img src="/public/pizza.png" alt="Rotating Pizza" class="rotating-pizza" />
+        <div style="font-size: clamp(10px,5vw,50px)">
+          <br>DO YOU HAVE ANY</br>
+          <br>LEFTOVER INGREDIENTS</br>
+        </div>
+      </div>
+
+      <div class="chickenDish-container">
+        <div style="font-size: clamp(10px,5vw,50px)">
+          <br>CONVERT THEM INTO</br>
+          <br>TASTY MEAL OF YOUR CHOICE</br>
+        </div>
+        <img src="/public/chicken.png" alt="Rotating chicken dish" class="rotating-chickenDish"/>
+      </div>
+
+      <div style="font-size:clamp(10px,5vw,50px);" class="waiting-effect">
+        <br> WHAT ARE YOU WAITING FOR....
+        <br>
+        <br>
+        <br>
+      </div>
+
+      <div class="two-dish-container">
         <div>
-          <b>CONVERT THEM INTO</b>
+            <img src="/public/Seafood-Noodles.png" class="rotating-double-dish1">
+        </div>
+        <div style="margin-top: 10%">
+          <UButton>SignUp / Login</UButton>
         </div>
         <div>
-          <b>TASTY MEAL OF YOUR CHOICE</b>
+          <img src="/public/Seafood-Noodles.png" class="rotating-double-dish2"/>
         </div>
       </div>
-      <img src="/public/chicken.png" alt="Rotating chicken dish" class="rotating-chickenDish"/>
+
     </div>
-    
-    <div style="display:flex; justify-content: space-between">
-      <div class="seafoodNoodles-container">
-      <img src="/public/Seafood-Noodles.png" class="rotating-seafoodNoodles"/>
-      </div>
-      <div class="seafoodPasta-container">
-        <img src="/public/Seafood-Pasta.png" class="rotating-seafoodPasta"/>
-      </div>
-    </div>
-    
-    <!-- <div class="taglia-container">
-      <img src="/public/Tagliatelle.png" class="rotating-taglia"/>
-    </div> -->
-</div>
+  </div>
 <UCard>
   <div style="font-size: 13px; display: flex; justify-content: start;">
     <div style="margin-right: 10px">
@@ -130,71 +141,95 @@ const items = [
   max-width: 100vw;
   overflow-x: hidden;
 }
-.pizza-container {
+.title-container {
+  font-size: 500%
+}
+.typing-effect {
+    /* width: 30%; */
+    font-size: clamp(1rem, 10vw, 1.5rem);
+    overflow: hidden; /*Ensure the text is not visible until the typewriter effect */
+    /* border-right: 100% solid white; The cursor */
+    white-space: nowrap; /* Keeps the text on a single line */
+    animation: typing 5s forwards infinite;
+
+    /* margin: 1vh; Gives that scrolling effect as the typing happens */
+  }@keyframes typing {
+  from { width: 0ch ;}
+  to { width: 31ch ;}
+  }
+
+  .waiting-effect {
+    margin: 0 auto;
+    overflow: hidden; /*Ensure the text is not visible until the typewriter effect */
+    /* border-right: 100% solid white; The cursor */
+    white-space: nowrap; /* Keeps the text on a single line */
+    animation: waiting 2s forwards infinite;
+  }@keyframes waiting {
+  from { width: 24ch ;}
+  to { width: 25.6ch ;}
+  }
+  
+  .about-container {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    padding: 5%;
+    margin-left: 10px; 
+    margin-right: 10px;
+    /* background-image: linear-gradient(#120217,#240b2b); */
+  }
+
+  /* images */
+  .pizza-container {
   display: flex;
-  margin-top: 80px;
-  margin-left: 30px;
+  margin-top: 20vh;
+  margin-left: 4vw;
+  margin-right: 4vw;
   justify-content: space-between;
   align-items: center;
-  height: 60vh;
-}
-.rotating-pizza {
-  width: 500px;
-  height: 500px;
-  animation: rotate 10s linear infinite;
-}
+  gap: 10vw;
+  }
+  .rotating-pizza {
+    width: clamp(300px, 30vw, 400px);
+    height: auto;
+    animation: rotate 10s linear infinite;
+  }
 
-.chickenDish-container{
+  .chickenDish-container{
   display:flex;
   justify-content: space-between;
   align-items: center;
-  height: 60vh
-}
+  margin-left: 4vw;
+  margin-right: 4vw;
+  height: 60vh;
+  gap: 10vw;
+  }
+  .rotating-chickenDish{
+    width: clamp(300px, 30vw, 400px);
+    height: auto;
+    animation: rotate 10s linear infinite;
+  }
 
-.rotating-chickenDish{
-  width: 500px;
-  height: 500px;
-  animation: rotate 10s linear infinite;
-}
+  .two-dish-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    margin-bottom:4vw;
+    gap: 10vw;
+  }
+  .rotating-double-dish1 {
+    width: clamp(100px, 40vw, 400px);
+    height: auto;
+    /* animation: rotate 10s linear infinite; */
+  }
+  .rotating-double-dish2 {
+    width: clamp(100px, 40vw, 400px);
+    height: auto;
+    /* animation: rotate 10s linear infinite; */
+  }
+  
+  
 
-.seafoodNoodles-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 70px;
-  height: 100vh
-}
-.rotating-seafoodNoodles {
-  width: 400px;
-  height: 400px;
-  animation: rotate 10s linear infinite;
-}
-
-.seafoodPasta-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.rotating-seafoodPasta {
-  width: 600px;
-  height: 600px;
-  animation: rotate 10s linear infinite;
-}
-
-/* .taglia-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh
-}
-.rotating-taglia {
-  width: 300px;
-  height: 300px;
-  animation: rotate 10s linear infinite;
-} */
-
-@keyframes rotate {
+  @keyframes rotate {
   from {
     transform: rotate(0deg);
   }
@@ -202,23 +237,5 @@ const items = [
     transform: rotate(360deg);
   }
 }
-.typing-effect {
-    width: 40;
-    font-size:35px;
-    overflow: hidden; /* Ensure the text is not visible until the typewriter effect*/
-    border-right: 2px solid white; /* The cursor*/
-    white-space: nowrap; /* Keeps the text on a single line */
-    animation: typing 5s forwards infinite;
-  }
-  @keyframes typing {
-  from { width: 0% ; margin-left: 500px}
-  to { width: 39% ; margin-left: 500px}
-  }
-  .about-container {
-    padding: 5px;
-    margin-left: 100px; 
-    margin-right: 100px;
-    /* background-image: linear-gradient(#120217,#240b2b); */
-  }
 </style>
 
