@@ -12,7 +12,6 @@
 
 .multiselect__placeholder {
     color: var(--ui-text-muted);
-    padding-top: 2px;
 }
 
 .multiselect__input::placeholder {
@@ -26,46 +25,19 @@
 
 .multiselect__input,
 .multiselect__single {
-    position: relative;
-    display: inline-block;
-    min-height: 20px;
-    line-height: 20px;
-    border: 0;
-    border-radius: 5px;
     background: var(--ui-bg);
-    width: calc(100%);
-    transition: border 0.1s ease;
-    box-sizing: border-box;
-    vertical-align: top;
 }
 
 .multiselect__content-wrapper {
-    position: absolute;
-    display: block;
     background: var(--ui-bg);
-    width: 100%;
-    max-height: 240px;
-    overflow: auto;
     border: 1px solid var(--ui-border-accented);
-    border-top: none;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    z-index: 50;
-    -webkit-overflow-scrolling: touch;
 }
 
 .multiselect--above .multiselect__content-wrapper {
-    bottom: 100%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom: none;
     border-top: 1px solid var(--ui-border-accented);
 }
 
 .multiselect__option--selected::after {
-    content: attr(data-selected);
     color: var(--ui-text-highlighted);
     background: var(--ui-bg);
 }
