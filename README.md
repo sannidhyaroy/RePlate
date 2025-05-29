@@ -1,47 +1,45 @@
 # RePlate
-### _Refill your plate with LeftOvers_ 🍽️
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1f5898f9-62ea-4651-bd54-ec9d783a6b4a/deploy-status)](https://app.netlify.com/sites/replate-recipes/deploys)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0)
+[![Nuxt 3](https://img.shields.io/badge/Nuxt-3-4FC08D?style=flat-square)](https://nuxt.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.5-blue?style=flat-square)](https://www.typescriptlang.org)
 
-RePlate is a smart web application designed to help users manage their food waste by analyzing recipes and suggesting ways to use leftover ingredients. It features a user-friendly interface, a recipe database, and integration with suitable algorithm to provide users the exact solution to their problem.
+Refill your plate with LeftOvers 🍽️
 
 ---
 
 ## Table of Contents
-* [The Problem We Solve](#the-problem-we-solve)
-* [Features](#features)
-* [Tech Stack](#tech-stack)
-* [Deploy Link](#deploy-link)
-* [How to Run Locally](#how-to-run-locally)
+1. [Overview](#overview)
+    * [Problem](#problem)
+    * [Solution](#solution)
+2. [Tech Stack](#tech-stack)
+3. [Hosted Instance](#hosted-instance)
+4. [How to Run Locally](#how-to-run-locally)
     * [Prerequisites](#prerequisites)
     * [Installation](#installation)
     * [Set up Supabase Environment Variables](#supabase-environment-variables)
     * [Run the development server](#run-the-development-server)
-* [Project Status & Future Enhancements](#project-status--future-enhancements)
-* [Our Team](#our-team)
-* [License](#license)
-
+5. [Project Status & Future Enhancements](#project-status--future-enhancements)
+6. [Our Team](#our-team)
+7. [License](#license)
 
 ---
 
 
-## The Problem we Solve
+## Overview
+
+RePlate is a Nuxt web application designed to help users manage their food waste by analyzing recipes and suggesting ways to use leftover ingredients. It features a user-friendly interface, an enourmous recipe database of 6871 recipes, selectable search filters and uses suitable algorithms and remote procedure calls to provide users a better way to replate their leftovers.
+
+**Hosted Instance:** RePlate is deployed to Netlify at [replate.thenoton.com](https://replate.thenoton.com).
+
+### Problem
 Food waste is a pressing global issue, contributing significantly to environmental degradation, depletion of natural resources, and economic strain. Discarding edible food not only wastes the food itself but also the valuable water, energy, and labor invested in its production. At the household level, the improper use of available ingredients often leads to daily challenges such as budget imbalances, unnecessary wastage, and reliance on unhealthy fast food—especially among individuals with busy lifestyles who struggle to plan meals with what's already at hand.  
 
 As the global population continues to rise, so does the demand for food production. This makes it increasingly important for every individual to take responsibility for consuming and utilizing food efficiently.  
 
-### Solution 
+### Solution
 In this context, RePlate emerges as a smart solution to tackle household food waste. Through its intelligent recipe suggestions based on available ingredients, RePlate helps users make the most of what they already have. By doing so, it not only reduces food wastage but also supports better grocery planning and promotes healthier eating habits.  
-
-
----
-    
-
-## Features
-  The current version of RePlate has these features:
-  - **User Registration with Email Verification:** New users can sign up securely, with a verification process to confirm their email.
-  - **Login for Returning Users:** Registered users can easily log in to access their personalized experience.
-  - **Smart Recipe Search:** Users input their available leftover ingredients and receive a curated list of possible recipes tailored to what's on hand
-
 
 ---
 
@@ -61,14 +59,12 @@ In this context, RePlate emerges as a smart solution to tackle household food wa
 #### DEPLOY
 [![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://www.netlify.com/)
 
-
 ---
 
 
-## Hosted Version
+## Hosted Instance
 
 *RePlate has been deployed on Netlify at [replate.thenoton.com](https://replate.thenoton.com)*
-
 
 ---
 
