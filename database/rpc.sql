@@ -41,8 +41,8 @@ RETURNS TABLE (
 DECLARE
     query_str text;
 BEGIN
-    -- Join ingredients with ' & ' for exact match
-    query_str := array_to_string(input_ingredients, ' & ');
+    -- Join ingredients with ' | ' for exact match, replacing spaces with '+' in each ingredient
+    query_str := array_to_string(ARRAY(SELECT replace(i, ' ', '+') FROM unnest(input_ingredients) AS i), ' & ');
     RETURN QUERY
     SELECT recipes.id, recipes.name, recipes.ingredients_array, recipes.preparation_time, recipes.cooking_time, recipes.total_time, ts_rank(ingredients_tsvector, to_tsquery('english', query_str))
     FROM recipes
@@ -65,8 +65,8 @@ RETURNS TABLE (
 DECLARE
     query_str text;
 BEGIN
-    -- Join ingredients with ' | ' for fuzzy match
-    query_str := array_to_string(input_ingredients, ' | ');
+    -- Join ingredients with ' | ' for fuzzy match, replacing spaces with '+' in each ingredient
+    query_str := array_to_string(ARRAY(SELECT replace(i, ' ', '+') FROM unnest(input_ingredients) AS i), ' | ');
     RETURN QUERY
     SELECT recipes.id, recipes.name, recipes.ingredients_array, recipes.preparation_time, recipes.cooking_time, recipes.total_time, ts_rank(ingredients_tsvector, to_tsquery('english', query_str))
     FROM recipes
@@ -89,8 +89,8 @@ RETURNS TABLE (
 DECLARE
     query_str text;
 BEGIN
-    -- Join ingredients with ' | ' for fuzzy match
-    query_str := array_to_string(input_ingredients, ' | ');
+    -- Join ingredients with ' | ' for fuzzy match, replacing spaces with '+' in each ingredient
+    query_str := array_to_string(ARRAY(SELECT replace(i, ' ', '+') FROM unnest(input_ingredients) AS i), ' | ');
     RETURN QUERY
     WITH intersections AS (
       SELECT
