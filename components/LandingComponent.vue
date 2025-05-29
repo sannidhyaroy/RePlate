@@ -31,7 +31,7 @@
     </div>
 
     <div>
-      <UCarousel v-slot="{ item }" loop wheel-gestures :items="items" :ui="{ item: 'basis-1/6' }">
+      <UCarousel v-slot="{ item }" loop wheel-gestures :items="items" :ui="{ item: 'basis-1/6' }" autoScroll >
         <img :src="item" width="200" height="234" class="rounded-lg">
       </UCarousel>
     </div>
@@ -42,14 +42,14 @@
         <img src="/public/pizza.png" alt="Rotating Pizza" class="rotating-pizza">
         <div class="text-[clamp(10px,5vw,50px)]">
           <br>DO YOU HAVE ANY<br>
-          <br>LEFTOVER INGREDIENTS<br>
+          <b>LEFTOVER INGREDIENTS</b>
         </div>
       </div>
 
       <div class="chickenDish-container">
         <div class="text-[clamp(10px,5vw,50px)]">
           <br>CONVERT THEM INTO<br>
-          <br>TASTY MEAL OF YOUR CHOICE<br>
+          <b>TASTY MEAL OF YOUR CHOICE</b>
         </div>
         <img src="/public/chicken.png" alt="Rotating chicken dish" class="rotating-chickenDish">
       </div>
@@ -101,12 +101,12 @@ defineProps<{
   about: string;
 }>();
 const items = [
-  'https://picsum.photos/468/468?random=1',
-  'https://picsum.photos/468/468?random=2',
-  'https://picsum.photos/468/468?random=3',
-  'https://picsum.photos/468/468?random=4',
-  'https://picsum.photos/468/468?random=5',
-  'https://picsum.photos/468/468?random=6',
+  'https://images.unsplash.com/photo-1560684352-8497838a2229?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1597933593749-fba737c268c1?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1723588636244-e82f63cb01e3?q=80&w=2083&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://plus.unsplash.com/premium_photo-1664640733617-56652d5a5cee?q=80&w=2134&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1643892467625-65df6a500524?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1668665771757-4d42737d295a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   'https://images.unsplash.com/photo-1597933593749-fba737c268c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWVhbHxlbnwwfDJ8MHx8fDA%3D',
   'https://media.istockphoto.com/id/1040749178/photo/thali-meal-indian-food.jpg?s=612x612&w=is&k=20&c=sK096oaWYAY_KVG5RlAi0egdag-aD2Rjjc0Srn3kr60=',
   'https://images.unsplash.com/photo-1597933593749-fba737c268c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWVhbHxlbnwwfDJ8MHx8fDA%3D',
