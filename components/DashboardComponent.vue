@@ -14,6 +14,7 @@
                 v-slot="{ item }"
                 loop
                 dots
+                wheel-gestures
                 arrows
                 :items="recipeData"
                 :ui="{ item: 'basis-1/3' }"
