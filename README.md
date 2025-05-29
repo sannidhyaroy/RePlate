@@ -5,6 +5,8 @@
 
 RePlate is a smart web application designed to help users manage their food waste by analyzing recipes and suggesting ways to use leftover ingredients. It features a user-friendly interface, a recipe database, and integration with suitable algorithm to provide users the exact solution to their problem.
 
+---
+
 ## Table of Contents
 * [The Problem We Solve](#the-problem-we-solve)
 * [Features](#features)
@@ -20,6 +22,9 @@ RePlate is a smart web application designed to help users manage their food wast
 * [License](#license)
 
 
+---
+
+
 ## The Problem we Solve
 Food waste is a pressing global issue, contributing significantly to environmental degradation, depletion of natural resources, and economic strain. Discarding edible food not only wastes the food itself but also the valuable water, energy, and labor invested in its production. At the household level, the improper use of available ingredients often leads to daily challenges such as budget imbalances, unnecessary wastage, and reliance on unhealthy fast food—especially among individuals with busy lifestyles who struggle to plan meals with what's already at hand.  
 
@@ -28,6 +33,8 @@ As the global population continues to rise, so does the demand for food producti
 ### Solution 
 In this context, RePlate emerges as a smart solution to tackle household food waste. Through its intelligent recipe suggestions based on available ingredients, RePlate helps users make the most of what they already have. By doing so, it not only reduces food wastage but also supports better grocery planning and promotes healthier eating habits.  
 
+
+---
     
 
 ## Features
@@ -36,6 +43,8 @@ In this context, RePlate emerges as a smart solution to tackle household food wa
   - **Login for Returning Users:** Registered users can easily log in to access their personalized experience.
   - **Smart Recipe Search:** Users input their available leftover ingredients and receive a curated list of possible recipes tailored to what's on hand
 
+
+---
 
 
 ## Tech Stack
@@ -52,12 +61,18 @@ In this context, RePlate emerges as a smart solution to tackle household food wa
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 #### DEPLOY
 [![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://www.netlify.com/)
-  
+
+
+---
+
 
 ## Deploy Link
 
 *RePlate has been deployted on Netlify  
 *Link to the app   :   [RePlate]()
+
+
+---
 
 
 ## How to Run Locally?
@@ -110,6 +125,11 @@ Ensure you have the following installed:
       ```
 
 
+---
+
+
+
+
 ## Project Status and Future Enhancements
 
 - #### Current Status ✅
@@ -123,6 +143,11 @@ Ensure you have the following installed:
     - adding premium features like diet-planning, pantry management, etc
 
 
+
+---
+
+
+
 ## Our Team
 The contributors of this project are :
 * **Sannidhya Roy** [![GitHub](https://img.shields.io/badge/--black?style=flat-square&logo=github&logoColor=white)](https://github.com/sannidhyaroy/)  
@@ -133,6 +158,16 @@ _handling the frontend,backend development, authentication and deployment_
  _handling the ideation, design and management_  
 
 
+
+---
+
+
+
 ## License
 RePlate is licensed under the [GNU General Public License (GPL) v3.0](https://github.com/sannidhyaroy/RePlate/blob/main/LICENSE).
+
+
+---
+
+
 
