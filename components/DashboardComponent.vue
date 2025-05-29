@@ -18,14 +18,15 @@
                 :items="recipeData"
                 :ui="{ item: 'basis-1/3' }"
                 >
-                    <div style="width:60%; height:30vh; text-align: center;padding:10px; background-color:#153a75; border-radius: 16px; gap: 20px">
-                        <div>
-                            {{ item[0].id }}
-                        </div>
-                        <div>
-                            <b>{{item[0].name}}</b>
-                        </div>
-                    </div>
+                    <UCard
+                    v-if="!loading" class=" md:col-span-2 transition-all duration-900 ease-in-out w-60 h-50 "
+                    :variant="hovered ? 'subtle' : 'outline'" @mouseenter="hovered = true" @mouseleave="hovered = false">
+                    <template #header>
+                        <h2 class="text-2xl font-bold">{{ item[0].id }}</h2>
+                    </template>
+                    <p class="my-1 py-2">{{ item[0].name }}</p>
+                    
+                </UCard>
             </UCarousel>
             <br>
             <UCard class="p-4" variant="subtle">
