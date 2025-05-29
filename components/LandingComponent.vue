@@ -14,16 +14,10 @@
       </div>
     </div>
 
-    <!-- contribute button -->
-    <div class="flex justify-center my-5">
-      <div class="mr-10 cook">
-        <UButton to="/signup" class="font-bold rounded-full" color="error" variant="subtle" size="xl">
-          Cook
-        </UButton>
-      </div>
-      <UButton to="/signup" class="font-bold rounded-full" color="secondary" variant="subtle" size="xl">
-        Contribute
-      </UButton>
+    <!-- auth buttons-->
+    <div class="flex justify-center my-5 gap-4">
+      <UButton to="/signup" leading-icon="i-lucide-user-plus" label="Sign Up" size="xl" class="font-bold" />
+      <UButton to="/login" leading-icon="i-lucide-log-in" label="Log In" variant="subtle" size="xl" class="font-bold" />
     </div>
 
     <div class="font-serif text-2xl text-green-800 text-center mb-4 mt-8">
@@ -31,7 +25,7 @@
     </div>
 
     <div>
-      <UCarousel v-slot="{ item }" loop wheel-gestures :items="items" :ui="{ item: 'basis-1/6' }" autoScroll >
+      <UCarousel v-slot="{ item }" loop wheel-gestures :items="items" :ui="{ item: 'basis-1/6' }" auto-scroll>
         <img :src="item" width="200" height="234" class="rounded-lg">
       </UCarousel>
     </div>
@@ -63,14 +57,6 @@
       <div class="two-dish-container">
         <div>
           <img src="/public/Seafood-Noodles.png" class="rotating-double-dish1">
-        </div>
-        <div class="mt-[10%] space-y-6">
-          <UButton to="/signup" leading-icon="i-lucide-user-plus" class="mr-2" color="warning">
-            SignUp
-          </UButton>
-          <UButton to="/login" leading-icon="i-lucide-log-in" class="mr-2" color="warning">
-            Login
-          </UButton>
         </div>
         <div>
           <img src="/public/Seafood-Noodles.png" class="rotating-double-dish2">
