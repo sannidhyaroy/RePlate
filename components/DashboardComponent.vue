@@ -1,5 +1,5 @@
 <template>
-    <div class="page-container m-4 py-6 px-10 h-screen">
+    <div class="page-container m-4 py-6 px-10">
         <h1 class="font-bold text-5xl">Dashboard</h1>
         <USeparator class="my-4" color="primary" />
         <div class="flex flex-col gap-4">
@@ -10,19 +10,21 @@
                     View Profile
                 </UButton>
             </UCard>
-            <UCarousel
-                v-if="!loading" v-slot="{ item }" loop wheel-gestures arrows auto-scroll :items="recipeData"
-                :ui="{ item: 'basis-1/4' }" class="p-4">
-                <UCard
-                    class="h-50 m-1" :variant="hovered ? 'subtle' : 'outline'" @mouseenter="hovered = true" @mouseleave="hovered = false"
-                    @click="$router.push('/recipe/' + item[0].id)">
-                    <template #header>
-                        <h2 class="text-2xl font-bold">Recipe #{{ item[0].id }}</h2>
-                    </template>
-                    <p>{{ item[0].name }}</p>
-
-                </UCard>
-            </UCarousel>
+            <UCard v-if="!hideRandomRecipes" class="p-4" variant="outline">
+                <h2 class="text-2xl font-bold">Recipes for you to crave</h2>
+                <UCarousel
+                    v-if="!loading" v-slot="{ item }" loop wheel-gestures auto-scroll :items="recipeData"
+                    :ui="{ item: 'basis-1/4' }" class="p-4">
+                    <UCard
+                        class="h-50 m-1" variant="subtle" @click="$router.push('/recipe/' + item[0].id)">
+                        <template #header>
+                            <h2 class="text-2xl font-bold">Recipe #{{ item[0].id }}</h2>
+                        </template>
+                        <p>{{ item[0].name }}</p>
+                    </UCard>
+                </UCarousel>
+                <USkeleton v-else class="w-full h-50 m-4" />
+            </UCard>
             <br>
             <UCard class="p-4" variant="subtle">
                 <h2 class="text-2xl font-bold mb-4">RePlate your leftovers</h2>
@@ -39,6 +41,7 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient();
 const loading = ref(true);
+const hideRandomRecipes = ref(false);
 const recipe = {
     minId: 1,
     maxId: 6871,
@@ -50,6 +53,15 @@ const recipe = {
 
 const recipeData = ref([]);
 
+const showErrorAlert = (message) => {
+    toast.add({
+        title: 'Something went wrong!',
+        description: message,
+        color: 'error',
+        icon: 'i-lucide-badge-alert'
+    });
+}
+
 const fetchRecipe = async (Id) => {
     try {
         const { data, error } = await supabase.rpc('get_recipe_by_id', { recipe_id: Id });
@@ -59,7 +71,8 @@ const fetchRecipe = async (Id) => {
             return data;
         }
     } catch (error) {
-        console.error('Error fetching recipe:', error);
+        showErrorAlert(error.message || 'Failed to fetch random recipes');
+        hideRandomRecipes.value = true;
     }
 }
 onMounted(async () => {
