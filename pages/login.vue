@@ -15,5 +15,7 @@
     flex-wrap: wrap;
     max-width: 50%;
     padding: 2rem;
+    align-items: center;
+    max-width: 100vw;
 }
 </style>
