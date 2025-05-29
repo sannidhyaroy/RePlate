@@ -25,7 +25,7 @@ const emit = defineEmits(['close-modal']);
 const fetchItems = async () => {
     try {
         loading.value = true;
-        const { data, error } = await supabase.rpc(props.searchFunction, { ingredients: props.ingredients });
+        const { data, error } = await supabase.rpc(props.searchFunction, { input_ingredients: props.ingredients });
         if (error) throw error;
         if (data && data.length > 0) {
             items.value = data;
