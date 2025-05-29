@@ -1,7 +1,7 @@
 <template>
-    <div class="login-block">
-        <h1 class="page-title">Welcome Back!</h1>
-        <h3 class="tagline">Login to RePlate</h3>
+    <div class="login-block flex justify-center items-center flex-col gap-4">
+        <h1 class="page-title text-4xl font-bold">Welcome Back!</h1>
+        <h3 class="tagline text-2xl">Login to RePlate</h3>
         <AuthForm />
     </div>
 </template>
