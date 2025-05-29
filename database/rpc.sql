@@ -78,6 +78,7 @@ $$ LANGUAGE plpgsql STABLE;
 -- RPC: Fuzzy Search for recipes with minimum extra ingredients
 CREATE OR REPLACE FUNCTION search_recipes_optimal(ingredients text[])
 RETURNS TABLE (
+    id integer,
     name varchar(255),
     ingredients_array text[],
     total_ingredients int,
@@ -93,6 +94,7 @@ BEGIN
     RETURN QUERY
     WITH intersections AS (
       SELECT
+        r.id,
         r.name,
         r.ingredients_array,
         r.ingredients_tsvector,
@@ -107,6 +109,7 @@ BEGIN
       FROM recipes r
     )
     SELECT
+      id,
       name,
       ingredients_array,
       cardinality(ingredients_array) AS total_ingredients,
