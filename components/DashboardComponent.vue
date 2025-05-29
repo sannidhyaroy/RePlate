@@ -16,7 +16,7 @@
                     v-if="!loading" v-slot="{ item }" loop wheel-gestures auto-scroll :items="recipeData"
                     :ui="{ item: 'basis-1/4' }" class="p-4">
                     <UCard
-                        class="h-50 m-1" variant="subtle" @click="$router.push('/recipe/' + item[0].id)">
+                        class="cursor-pointer h-50 m-1" variant="subtle" @click="$router.push(`/recipe/${item[0].id}`)">
                         <template #header>
                             <h2 class="text-2xl font-bold">Recipe #{{ item[0].id }}</h2>
                         </template>
