@@ -1,48 +1,41 @@
 <template>
-  <div class="landing-container">
+  <div class="landing-container bg-gradient-to-b from-[#06031f] via-[#111247] via-70% to-[#c45f00] to-90% max-w-full overflow-x-hidden">
     <div class="flex flex-col items-center text-center">
-      <div class="title-container">
+      <div class="title-container text-[500%]">
         {{ title }}
       </div>
-
       <div class="tagline-container text-xl">
         <b>{{ tagline }}</b>
       </div>
-
     </div>
-
     <!-- auth buttons-->
     <div class="flex justify-center my-5 gap-4">
       <UButton to="/signup" leading-icon="i-lucide-user-plus" label="Sign Up" size="xl" class="font-bold" />
       <UButton to="/login" leading-icon="i-lucide-log-in" label="Log In" variant="subtle" size="xl" class="font-bold" />
     </div>
-
     <div class="font-serif text-2xl text-green-800 text-center mb-4 mt-8">
-      <USeparator color="primary">TODAY'S SUGGESTIONS</USeparator>
+      <USeparator color="primary">Today's Suggestions</USeparator>
     </div>
-
     <div>
       <UCarousel v-slot="{ item }" loop wheel-gestures :items="items" :ui="{ item: 'basis-1/6' }" auto-scroll>
-        <img :src="item" class="rounded-lg object-cover carousel-img-fixed">
+        <NuxtImg :src="item" class="rounded-lg object-cover carousel-img-fixed" />
       </UCarousel>
     </div>
-
     <!-- rotation images -->
     <div class="parent-food">
-      <div class="leftfood-container">
-        <img src="/public/leftovers.png" alt="Rotating Pizza" class="left-rotating-food">
+      <div class="leftfood-container flex mt-[20vh] mx-[4vw] justify-between items-center gap-[10vw]">
+        <img src="/public/leftovers.png" alt="Rotating Pizza" class="left-rotating-food w-[clamp(300px,30vw,400px)] h-auto animate-spin-slow">
         <div class="text-[clamp(10px,5vw,50px)]">
           <br>DO YOU HAVE ANY<br>
           <b>LEFTOVER INGREDIENTS?</b>
         </div>
       </div>
-
-      <div class="rightfood-container">
+      <div class="rightfood-container flex justify-between items-center mx-[4vw] h-[60vh] gap-[10vw]">
         <div class="text-[clamp(10px,5vw,50px)]">
           <br>REPLATE THEM TO<br>
           <b>TASTY MEALS OF YOUR CHOICE</b>
         </div>
-        <img src="/public/pizza.png" alt="Rotating chicken dish" class="right-rotating-food">
+        <img src="/public/pizza.png" alt="Rotating chicken dish" class="right-rotating-food w-[clamp(300px,30vw,400px)] h-auto animate-spin-reverse-slow">
       </div>
     </div>
   </div>
@@ -83,51 +76,7 @@ const items = [
 ]
 </script>
 
-
 <style scoped>
-.landing-container {
-  background-image: linear-gradient(#06031f, #111247, #c45f00, #d1c156);
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-.title-container {
-  font-size: 500%
-}
-
-/* images */
-.leftfood-container {
-  display: flex;
-  margin-top: 20vh;
-  margin-left: 4vw;
-  margin-right: 4vw;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10vw;
-}
-
-.left-rotating-food {
-  width: clamp(300px, 30vw, 400px);
-  height: auto;
-  animation: leftrotate 15s linear infinite;
-}
-
-.right-rotating-food {
-  width: clamp(300px, 30vw, 400px);
-  height: auto;
-  animation: rightrotate 15s linear infinite;
-}
-
-.rightfood-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 4vw;
-  margin-right: 4vw;
-  height: 60vh;
-  gap: 10vw;
-}
-
 .carousel-img-fixed {
   height: 220px;
   width: 200px;
@@ -136,23 +85,19 @@ const items = [
   margin: 0 auto;
 }
 
-@keyframes leftrotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+/* Custom spin animations for slow and reverse spin */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
-
-@keyframes rightrotate {
-  from {
-    transform: rotate(360deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
+@keyframes spin-reverse-slow {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 15s linear infinite;
 }
 </style>
