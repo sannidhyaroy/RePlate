@@ -14,11 +14,16 @@
             <div class="form-item password-field">
                 <UFormField label="Password" name="password" required>
                     <UInput
-                        v-model="state.password" type="password" :placeholder="signupForm ? 'Create a new password' : 'Enter your password'" />
+                        v-model="state.password" type="password"
+                        :placeholder="signupForm ? 'Create a new password' : 'Enter your password'" />
                 </UFormField>
             </div>
-            <UButton
-                class="form-button" :label="signupForm ? 'Sign Up' : 'Log In'" :icon="signupForm ? 'mdi:account-plus' : 'mdi:login'" type="submit" :loading="loading" loading-icon="i-lucide-loader" />
+            <div class="form-item submit-button">
+                <UButton
+                    :label="signupForm ? 'Sign Up' : 'Log In'" block
+                    :icon="signupForm ? 'mdi:account-plus' : 'mdi:login'" type="submit" :loading="loading"
+                    loading-icon="i-lucide-loader" />
+            </div>
         </UForm>
     </UCard>
 </template>
