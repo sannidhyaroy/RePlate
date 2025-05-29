@@ -47,21 +47,6 @@
         </div>
         <img src="/public/chicken.png" alt="Rotating chicken dish" class="rotating-chickenDish">
       </div>
-
-      <div class="text-[clamp(10px,5vw,50px)] waiting-effect">
-        <br> WHAT ARE YOU WAITING FOR....<br>
-        <br>
-        <br>
-      </div>
-
-      <div class="two-dish-container">
-        <div>
-          <img src="/public/Seafood-Noodles.png" class="rotating-double-dish1">
-        </div>
-        <div>
-          <img src="/public/Seafood-Noodles.png" class="rotating-double-dish2">
-        </div>
-      </div>
     </div>
   </div>
   <div class="footer flex flex-col items-center text-center my-10 p-2">
