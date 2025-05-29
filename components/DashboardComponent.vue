@@ -12,15 +12,14 @@
             </UCard>
             <UCarousel
                 v-if="!loading" v-slot="{ item }" loop wheel-gestures arrows auto-scroll :items="recipeData"
-                :ui="{ item: 'basis-1/4' }">
+                :ui="{ item: 'basis-1/4' }" class="p-4">
                 <UCard
-                    class=" md:col-span-2 transition-all duration-900 ease-in-out w-60 h-50 "
-                    :variant="hovered ? 'subtle' : 'outline'" @mouseenter="hovered = true" @mouseleave="hovered = false"
+                    class="h-50 m-1" :variant="hovered ? 'subtle' : 'outline'" @mouseenter="hovered = true" @mouseleave="hovered = false"
                     @click="$router.push('/recipe/' + item[0].id)">
                     <template #header>
                         <h2 class="text-2xl font-bold">Recipe #{{ item[0].id }}</h2>
                     </template>
-                    <p class="my-1 py-2">{{ item[0].name }}</p>
+                    <p>{{ item[0].name }}</p>
 
                 </UCard>
             </UCarousel>
