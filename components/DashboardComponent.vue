@@ -10,6 +10,24 @@
                     View Profile
                 </UButton>
             </UCard>
+            <UCarousel
+                v-slot="{ item }"
+                loop
+                dots
+                arrows
+                :items="recipeData"
+                :ui="{ item: 'basis-1/3' }"
+                >
+                    <div style="width:234px; text-align: center;padding:10px;height:234px; background-color:#153a75; border-radius: 16px">
+                        <div>
+                            {{ item[0].id }}
+                        </div>
+                        <div>
+                            <b>{{item[0].name}}</b>
+                        </div>
+                    </div>
+            </UCarousel>
+            <br>
             <UCard class="p-4" variant="subtle">
                 <h2 class="text-2xl font-bold mb-4">RePlate your leftovers</h2>
                 <p class="mb-4">You can reduce your food wastage by searching for recipes that utilize your leftovers.
@@ -35,16 +53,10 @@ function item_no(): number{
 }
 const minCeiled: number = Math.ceil(min);
 const maxFloored: number = Math.floor(max);
-const recipeId: number[] = [];
-if(process.client){
-    for(let i = 0; i < 10; i++){
-        recipeId.push(item_no())
-    }
-}
+const recipeData: any[] = [];
 
 const fetchRecipe = async (Id) => {
     try {
-        loading.value = true;
         const { data, err } = await supabase.rpc('get_recipe_by_id', { recipe_id: Id });
         if (err) throw rpcError;
         if (data && data.length > 0) {
@@ -56,6 +68,15 @@ const fetchRecipe = async (Id) => {
         loading.value = false;
     }
 }
-console.log(fetchRecipe(recipeId[0]));
+
+if(process.client){
+    for(let i = 0; i < 10; i++){
+        // const { data, err } = await supabase.rpc('get_recipe_by_id', { recipe_id: item_no() });
+        // recipeData.push(data)
+        const result = await fetchRecipe(item_no())
+        recipeData.push(result);
+    }
+}
+console.log(JSON.stringify(recipeData)+"data");
 </script>
 <style></style>
