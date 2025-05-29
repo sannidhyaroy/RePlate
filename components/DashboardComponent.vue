@@ -1,5 +1,5 @@
 <template>
-    <div class="page-container m-4 py-6 px-10">
+    <div class="page-container m-4 py-6 px-10 h-screen">
         <h1 class="font-bold text-5xl">Dashboard</h1>
         <USeparator class="my-4" color="primary" />
         <div class="flex flex-col gap-4">
@@ -18,7 +18,7 @@
                 :items="recipeData"
                 :ui="{ item: 'basis-1/3' }"
                 >
-                    <div style="width:234px; text-align: center;padding:10px;height:234px; background-color:#153a75; border-radius: 16px">
+                    <div style="width:60%; height:30vh; text-align: center;padding:10px; background-color:#153a75; border-radius: 16px; gap: 20px">
                         <div>
                             {{ item[0].id }}
                         </div>
@@ -77,6 +77,12 @@ if(process.client){
         recipeData.push(result);
     }
 }
-console.log(JSON.stringify(recipeData)+"data");
-</script>
+const items = [
+  'https://picsum.photos/468/468?random=1',
+  'https://picsum.photos/468/468?random=2',
+  'https://picsum.photos/468/468?random=3',
+  'https://picsum.photos/468/468?random=4',
+  'https://picsum.photos/468/468?random=5',
+  'https://picsum.photos/468/468?random=6'
+]</script>
 <style></style>
