@@ -27,6 +27,19 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql STABLE;
 
+-- RPC: Get all unique ingredients from all recipes
+CREATE OR REPLACE FUNCTION fetch_ingredients()
+RETURNS TABLE (
+    ingredient text
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT DISTINCT trim(both from regexp_replace(ing, '\s*(–|-).*$', '', 'g')) AS ingredient
+    FROM recipes, unnest(ingredients_array) AS ing
+    WHERE ingredients_array IS NOT NULL;
+END;
+$$ LANGUAGE plpgsql STABLE;
+
 -- RPC: Exact match search for recipes with all specified ingredients
 CREATE OR REPLACE FUNCTION search_recipes_exact(input_ingredients text[])
 RETURNS TABLE (
