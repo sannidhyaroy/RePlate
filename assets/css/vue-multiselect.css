@@ -12,6 +12,9 @@
 
 .multiselect__placeholder {
     color: var(--ui-text-muted);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .multiselect__input::placeholder {
