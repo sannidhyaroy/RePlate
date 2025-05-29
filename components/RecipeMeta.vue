@@ -9,8 +9,8 @@
             <div class="flex flex-col md:flex-row justify-between items-center text-center gap-4 md:gap-0">
                 <!-- Preparation Time -->
                 <div class="flex-1">
-                    <div class="text-lg font-bold">Preparation Time</div>
-                    <div class="text-3xl">{{ recipe.preparation_time || '-' }}
+                    <div class="text-lg font-semibold">Preparation Time</div>
+                    <div class="text-3xl font-bold">{{ recipe.preparation_time || '-' }}
                         <span v-if="recipe.preparation_time">min</span>
                     </div>
                 </div>
@@ -19,8 +19,8 @@
 
                 <!-- Cooking Time -->
                 <div class="flex-1">
-                    <div class="text-lg font-bold">Cooking Time</div>
-                    <div class="text-3xl">{{ recipe.cooking_time || '-' }}
+                    <div class="text-lg font-semibold">Cooking Time</div>
+                    <div class="text-3xl font-bold">{{ recipe.cooking_time || '-' }}
                         <span v-if="recipe.cooking_time">min</span>
                     </div>
                 </div>
@@ -29,8 +29,8 @@
 
                 <!-- Total Time -->
                 <div class="flex-1">
-                    <div class="text-lg font-bold">Total Time</div>
-                    <div class="text-3xl">{{ recipe.total_time || '-' }}
+                    <div class="text-lg font-semibold">Total Time</div>
+                    <div class="text-3xl font-bold">{{ recipe.total_time || '-' }}
                         <span v-if="recipe.total_time">min</span>
                     </div>
                 </div>

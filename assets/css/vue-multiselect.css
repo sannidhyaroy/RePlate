@@ -1,0 +1,51 @@
+.multiselect {
+    border-color: var(--ui-border-accented);
+    color: var(--ui-text-highlighted);
+    background-color: var(--ui-bg);
+}
+
+.multiselect__tags {
+    border: 1px solid var(--ui-border-accented);
+    background: var(--ui-bg);
+    /* font-size: var(--text-base); */
+}
+
+.multiselect__placeholder {
+    color: var(--ui-text-muted);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.multiselect__input::placeholder {
+    color: var(--ui-text-muted);
+}
+
+.multiselect__input {
+    background: var(--ui-bg);
+    color: var(--ui-text-highlighted);
+}
+
+.multiselect__input,
+.multiselect__single {
+    background: var(--ui-bg);
+}
+
+.multiselect__content-wrapper {
+    background: var(--ui-bg);
+    border: 1px solid var(--ui-border-accented);
+}
+
+.multiselect--above .multiselect__content-wrapper {
+    border-top: 1px solid var(--ui-border-accented);
+}
+
+.multiselect__option--selected::after {
+    color: var(--ui-text-highlighted);
+    background: var(--ui-bg);
+}
+
+.multiselect__option--selected {
+    background: var(--ui-bg);
+    color: var(--ui-text-highlighted);
+}

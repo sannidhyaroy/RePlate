@@ -43,8 +43,8 @@ const showErrorAlert = (message) => {
 const fetchRecipe = async () => {
     try {
         loading.value = true;
-        const { data, err } = await supabase.rpc('get_recipe_by_id', { recipe_id: id });
-        if (err) throw rpcError;
+        const { data, error } = await supabase.rpc('get_recipe_by_id', { recipe_id: id });
+        if (error) throw error;
         if (data && data.length > 0) {
             recipe.value = data[0];
         } else {
