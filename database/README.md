@@ -14,7 +14,7 @@ Before setting up the database, ensure you have the following:
 
 ## Set Up the Database
 
-### 1. Create a New Supabase Project
+### 1. Create a New Supabase Project (if not already created)
 
 1. Log in to the [Supabase Dashboard](https://supabase.com/dashboard/projects).
 2. Click on `New Project`.
