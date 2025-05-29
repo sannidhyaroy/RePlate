@@ -20,7 +20,9 @@
                 >
                     <UCard
                     v-if="!loading" class=" md:col-span-2 transition-all duration-900 ease-in-out w-60 h-50 "
-                    :variant="hovered ? 'subtle' : 'outline'" @mouseenter="hovered = true" @mouseleave="hovered = false">
+                    :variant="hovered ? 'subtle' : 'outline'" @mouseenter="hovered = true" @mouseleave="hovered = false"
+                    @click="$router.push('/recipe/' + item[0].id)"
+                    >
                     <template #header>
                         <h2 class="text-2xl font-bold">{{ item[0].id }}</h2>
                     </template>
@@ -42,6 +44,7 @@
 </template>
 
 <script lang="ts" setup>
+const router = useRouter()
 const supabase = useSupabaseClient();
 const loading = ref(true);
 
