@@ -17,11 +17,11 @@
     <!-- contribute button -->
     <div class="flex justify-center my-5">
       <div class="mr-10 cook">
-        <UButton class="font-bold rounded-full" color="error" variant="subtle" size="xl">
+        <UButton to="/signup" class="font-bold rounded-full" color="error" variant="subtle" size="xl">
           Cook
         </UButton>
       </div>
-      <UButton class="font-bold rounded-full" color="secondary" variant="subtle" size="xl">
+      <UButton to="/signup" class="font-bold rounded-full" color="secondary" variant="subtle" size="xl">
         Contribute
       </UButton>
     </div>
