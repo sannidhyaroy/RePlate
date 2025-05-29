@@ -49,7 +49,7 @@ In this context, RePlate emerges as a smart solution to tackle household food wa
 ## Tech Stack
 
 #### FRONTEND
-[![Nuxt.js](https://img.shields.io/badge/Nuxt.js-00DC82?style=flat-square&logo=nuxt.js&logoColor=white)](https://nuxt.com/)     [![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white)](https://vuejs.org/)     [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)       [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)      [![Nuxt UI](https://img.shields.io/badge/Nuxt_UI-0275d8?style=flat-square)](https://ui.nuxt.com/) 
+[![Nuxt.js](https://img.shields.io/badge/Nuxt.js-00DC82?style=flat-square&logo=nuxt&logoColor=white)](https://nuxt.com/)     [![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white)](https://vuejs.org/)     [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)       [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)      [![Nuxt UI](https://img.shields.io/badge/Nuxt_UI-0275d8?style=flat-square&logo=nuxt)](https://ui.nuxt.com/) 
     
 
 #### BACKEND
