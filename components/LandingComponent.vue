@@ -64,7 +64,7 @@
         <div>
           <img src="/public/Seafood-Noodles.png" class="rotating-double-dish1">
         </div>
-        <div class="mt-[10%]">
+        <div class="mt-[10%] space-y-6">
           <UButton to="/signup" leading-icon="i-lucide-user-plus" class="mr-2" color="warning">
             SignUp
           </UButton>
