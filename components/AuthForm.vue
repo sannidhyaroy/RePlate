@@ -1,5 +1,5 @@
 <template>
-    <UCard variant="subtle" class="auth-card">
+    <UCard variant="subtle" class="auth-card m-8">
         <UForm :validate="validate" :state="state" class="auth-form" @submit="onSubmit">
             <div v-if="signupForm" class="form-item name-field">
                 <UFormField label="Name" name="name" required>
@@ -13,12 +13,15 @@
             </div>
             <div class="form-item password-field">
                 <UFormField label="Password" name="password" required>
-                    <UInput
-                        v-model="state.password" type="password" :placeholder="signupForm ? 'Create a new password' : 'Enter your password'" />
+                    <UInput v-model="state.password" type="password"
+                        :placeholder="signupForm ? 'Create a new password' : 'Enter your password'" />
                 </UFormField>
             </div>
-            <UButton
-                class="form-button" :label="signupForm ? 'Sign Up' : 'Log In'" :icon="signupForm ? 'mdi:account-plus' : 'mdi:login'" type="submit" :loading="loading" loading-icon="i-lucide-loader" />
+            <div class="form-item submit-button">
+                <UButton :label="signupForm ? 'Sign Up' : 'Log In'" block
+                    :icon="signupForm ? 'mdi:account-plus' : 'mdi:login'" type="submit" :loading="loading"
+                    loading-icon="i-lucide-loader" />
+            </div>
         </UForm>
     </UCard>
 </template>

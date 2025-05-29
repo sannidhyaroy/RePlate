@@ -1,80 +1,52 @@
 <template>
-  <div class="landing-container">
-    <div class="flex flex-col items-center text-center">
-      <div class="title-container">
-        {{ title }}
+  <div
+    class="landing-container bg-gradient-to-b from-[#f8fafc] via-[#e2e8f0] via-70% to-[#fef9c3] to-90% dark:from-[#06031f] dark:via-[#111247] dark:via-70% dark:to-[#c45f00] dark:to-90% max-w-full overflow-x-hidden">
+    <div class="flex flex-col items-center text-center mt-10 mb-6">
+      <div class="flex items-center gap-3">
+        <img
+          src="/logo.png" alt="RePlate Logo" class="w-14 h-14 rounded-full shadow-md bg-white/80 dark:bg-black/40 p-1">
+        <span
+          class="title-container text-5xl md:text-6xl font-extrabold tracking-tight text-primary-900 dark:text-primary-100 drop-shadow-lg">
+          {{ title }}
+        </span>
       </div>
-
-      <div class="typing-effect">
-        <b>{{ tagline }}</b>
-      </div>
-
-      <div class="about-container">
-        <p>{{ about }}</p>
+      <div
+        class="tagline-container mt-3 text-lg md:text-2xl font-medium text-primary-700 dark:text-primary-200 italic tracking-wide">
+        <span class="inline-block px-4 py-1 bg-white/60 dark:bg-black/30 rounded-xl shadow-sm">
+          <b>{{ tagline }}</b>
+        </span>
       </div>
     </div>
-
-    <!-- contribute button -->
-    <div class="flex justify-center my-5">
-      <div class="mr-10 cook">
-        <UButton class="font-bold rounded-full" color="error" variant="subtle" size="xl">
-          Cook
-        </UButton>
-      </div>
-      <UButton class="font-bold rounded-full" color="secondary" variant="subtle" size="xl">
-        Contribute
-      </UButton>
+    <!-- auth buttons-->
+    <div class="flex justify-center my-5 gap-4">
+      <UButton to="/signup" leading-icon="i-lucide-user-plus" label="Sign Up" size="xl" class="font-bold" />
+      <UButton to="/login" leading-icon="i-lucide-log-in" label="Log In" variant="subtle" size="xl" class="font-bold" />
     </div>
-
     <div class="font-serif text-2xl text-green-800 text-center mb-4 mt-8">
-      <USeparator color="primary">TODAY'S SUGGESTIONS</USeparator>
+      <USeparator color="primary">Today's Suggestions</USeparator>
     </div>
-
     <div>
-      <UCarousel v-slot="{ item }" loop wheel-gestures :items="items" :ui="{ item: 'basis-1/6' }" autoScroll >
-        <img :src="item" width="200" height="234" class="rounded-lg">
+      <UCarousel v-slot="{ item }" loop wheel-gestures :items="items" :ui="{ item: 'basis-1/6' }" auto-scroll>
+        <NuxtImg :src="item" class="rounded-lg object-cover carousel-img-fixed" />
       </UCarousel>
     </div>
-
     <!-- rotation images -->
     <div class="parent-food">
-      <div class="pizza-container">
-        <img src="/public/pizza.png" alt="Rotating Pizza" class="rotating-pizza">
+      <div class="leftfood-container flex mt-[20vh] mx-[4vw] justify-between items-center gap-[10vw]">
+        <img
+          src="/public/leftovers.png" class="left-rotating-food w-[clamp(300px,30vw,400px)] h-auto animate-spin-slow">
         <div class="text-[clamp(10px,5vw,50px)]">
           <br>DO YOU HAVE ANY<br>
-          <b>LEFTOVER INGREDIENTS</b>
+          <b>LEFTOVER INGREDIENTS?</b>
         </div>
       </div>
-
-      <div class="chickenDish-container">
+      <div class="rightfood-container flex justify-between items-center mx-[4vw] h-[60vh] gap-[10vw]">
         <div class="text-[clamp(10px,5vw,50px)]">
-          <br>CONVERT THEM INTO<br>
-          <b>TASTY MEAL OF YOUR CHOICE</b>
+          <br>REPLATE THEM TO<br>
+          <b>TASTY MEALS OF YOUR CHOICE</b>
         </div>
-        <img src="/public/chicken.png" alt="Rotating chicken dish" class="rotating-chickenDish">
-      </div>
-
-      <div class="text-[clamp(10px,5vw,50px)] waiting-effect">
-        <br> WHAT ARE YOU WAITING FOR....<br>
-        <br>
-        <br>
-      </div>
-
-      <div class="two-dish-container">
-        <div>
-          <img src="/public/Seafood-Noodles.png" class="rotating-double-dish1">
-        </div>
-        <div class="mt-[10%] space-y-6">
-          <UButton to="/signup" leading-icon="i-lucide-user-plus" class="mr-2" color="warning">
-            SignUp
-          </UButton>
-          <UButton to="/login" leading-icon="i-lucide-log-in" class="mr-2" color="warning">
-            Login
-          </UButton>
-        </div>
-        <div>
-          <img src="/public/Seafood-Noodles.png" class="rotating-double-dish2">
-        </div>
+        <img
+          src="/public/pizza.png" class="right-rotating-food w-[clamp(300px,30vw,400px)] h-auto animate-spin-reverse-slow">
       </div>
     </div>
   </div>
@@ -98,7 +70,6 @@
 defineProps<{
   title: string;
   tagline: string;
-  about: string;
 }>();
 const items = [
   'https://images.unsplash.com/photo-1560684352-8497838a2229?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -116,126 +87,17 @@ const items = [
 ]
 </script>
 
-
 <style scoped>
-.landing-container {
-  background-image: linear-gradient(#06031f, #111247, #c45f00, #d1c156);
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-.title-container {
-  font-size: 500%
-}
-
-.typing-effect {
-  /* width: 30%; */
-  font-size: clamp(1rem, 10vw, 1.5rem);
-  overflow: hidden;
-  /*Ensure the text is not visible until the typewriter effect */
-  /* border-right: 100% solid white; The cursor */
-  white-space: nowrap;
-  /* Keeps the text on a single line */
-  animation: typing 5s forwards infinite;
-
-  /* margin: 1vh; Gives that scrolling effect as the typing happens */
-}
-
-@keyframes typing {
-  from {
-    width: 0ch;
-  }
-
-  to {
-    width: 31ch;
-  }
-}
-
-.waiting-effect {
+.carousel-img-fixed {
+  height: 220px;
+  width: 200px;
+  object-fit: cover;
+  display: block;
   margin: 0 auto;
-  overflow: hidden;
-  /*Ensure the text is not visible until the typewriter effect */
-  /* border-right: 100% solid white; The cursor */
-  white-space: nowrap;
-  /* Keeps the text on a single line */
-  animation: waiting 2s forwards infinite;
 }
 
-@keyframes waiting {
-  from {
-    width: 24ch;
-  }
-
-  to {
-    width: 25.6ch;
-  }
-}
-
-.about-container {
-  font-size: clamp(1rem, 1.5vw, 1.5rem);
-  padding: 5%;
-  margin-left: 10px;
-  margin-right: 10px;
-  /* background-image: linear-gradient(#120217,#240b2b); */
-}
-
-/* images */
-.pizza-container {
-  display: flex;
-  margin-top: 20vh;
-  margin-left: 4vw;
-  margin-right: 4vw;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10vw;
-}
-
-.rotating-pizza {
-  width: clamp(300px, 30vw, 400px);
-  height: auto;
-  animation: rotate 10s linear infinite;
-}
-
-.chickenDish-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 4vw;
-  margin-right: 4vw;
-  height: 60vh;
-  gap: 10vw;
-}
-
-.rotating-chickenDish {
-  width: clamp(300px, 30vw, 400px);
-  height: auto;
-  animation: rotate 10s linear infinite;
-}
-
-.two-dish-container {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 4vw;
-  margin-right: 4vw;
-  margin-bottom: 4vw;
-  gap: 10vw;
-}
-
-.rotating-double-dish1 {
-  width: clamp(100px, 40vw, 400px);
-  height: auto;
-  /* animation: rotate 10s linear infinite; */
-}
-
-.rotating-double-dish2 {
-  width: clamp(100px, 40vw, 400px);
-  height: auto;
-  /* animation: rotate 10s linear infinite; */
-}
-
-
-
-@keyframes rotate {
+/* Custom spin animations for slow and reverse spin */
+@keyframes spin-slow {
   from {
     transform: rotate(0deg);
   }
@@ -243,5 +105,23 @@ const items = [
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 15s linear infinite;
 }
 </style>
