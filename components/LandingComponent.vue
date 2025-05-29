@@ -5,7 +5,7 @@
         {{ title }}
       </div>
 
-      <div class="typing-effect">
+      <div class="tagline-container text-xl">
         <b>{{ tagline }}</b>
       </div>
 
@@ -29,20 +29,20 @@
 
     <!-- rotation images -->
     <div class="parent-food">
-      <div class="pizza-container">
-        <img src="/public/pizza.png" alt="Rotating Pizza" class="rotating-pizza">
+      <div class="leftfood-container">
+        <img src="/public/leftovers.png" alt="Rotating Pizza" class="left-rotating-food">
         <div class="text-[clamp(10px,5vw,50px)]">
           <br>DO YOU HAVE ANY<br>
-          <b>LEFTOVER INGREDIENTS</b>
+          <b>LEFTOVER INGREDIENTS?</b>
         </div>
       </div>
 
-      <div class="chickenDish-container">
+      <div class="rightfood-container">
         <div class="text-[clamp(10px,5vw,50px)]">
-          <br>CONVERT THEM INTO<br>
-          <b>TASTY MEAL OF YOUR CHOICE</b>
+          <br>REPLATE THEM TO<br>
+          <b>TASTY MEALS OF YOUR CHOICE</b>
         </div>
-        <img src="/public/chicken.png" alt="Rotating chicken dish" class="rotating-chickenDish">
+        <img src="/public/pizza.png" alt="Rotating chicken dish" class="right-rotating-food">
       </div>
     </div>
   </div>
@@ -95,51 +95,8 @@ const items = [
   font-size: 500%
 }
 
-.typing-effect {
-  /* width: 30%; */
-  font-size: clamp(1rem, 10vw, 1.5rem);
-  overflow: hidden;
-  /*Ensure the text is not visible until the typewriter effect */
-  /* border-right: 100% solid white; The cursor */
-  white-space: nowrap;
-  /* Keeps the text on a single line */
-  animation: typing 5s forwards infinite;
-
-  /* margin: 1vh; Gives that scrolling effect as the typing happens */
-}
-
-@keyframes typing {
-  from {
-    width: 0ch;
-  }
-
-  to {
-    width: 31ch;
-  }
-}
-
-.waiting-effect {
-  margin: 0 auto;
-  overflow: hidden;
-  /*Ensure the text is not visible until the typewriter effect */
-  /* border-right: 100% solid white; The cursor */
-  white-space: nowrap;
-  /* Keeps the text on a single line */
-  animation: waiting 2s forwards infinite;
-}
-
-@keyframes waiting {
-  from {
-    width: 24ch;
-  }
-
-  to {
-    width: 25.6ch;
-  }
-}
-
 /* images */
-.pizza-container {
+.leftfood-container {
   display: flex;
   margin-top: 20vh;
   margin-left: 4vw;
@@ -149,13 +106,19 @@ const items = [
   gap: 10vw;
 }
 
-.rotating-pizza {
+.left-rotating-food {
   width: clamp(300px, 30vw, 400px);
   height: auto;
-  animation: rotate 10s linear infinite;
+  animation: leftrotate 15s linear infinite;
 }
 
-.chickenDish-container {
+.right-rotating-food {
+  width: clamp(300px, 30vw, 400px);
+  height: auto;
+  animation: rightrotate 15s linear infinite;
+}
+
+.rightfood-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -165,42 +128,23 @@ const items = [
   gap: 10vw;
 }
 
-.rotating-chickenDish {
-  width: clamp(300px, 30vw, 400px);
-  height: auto;
-  animation: rotate 10s linear infinite;
-}
-
-.two-dish-container {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 4vw;
-  margin-right: 4vw;
-  margin-bottom: 4vw;
-  gap: 10vw;
-}
-
-.rotating-double-dish1 {
-  width: clamp(100px, 40vw, 400px);
-  height: auto;
-  /* animation: rotate 10s linear infinite; */
-}
-
-.rotating-double-dish2 {
-  width: clamp(100px, 40vw, 400px);
-  height: auto;
-  /* animation: rotate 10s linear infinite; */
-}
-
-
-
-@keyframes rotate {
+@keyframes leftrotate {
   from {
     transform: rotate(0deg);
   }
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes rightrotate {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
   }
 }
 </style>
