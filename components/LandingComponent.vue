@@ -1,5 +1,6 @@
 <template>
-  <div class="landing-container bg-gradient-to-b from-[#06031f] via-[#111247] via-70% to-[#c45f00] to-90% max-w-full overflow-x-hidden">
+  <div
+    class="landing-container bg-gradient-to-b from-[#f8fafc] via-[#e2e8f0] via-70% to-[#fef9c3] to-90% dark:from-[#06031f] dark:via-[#111247] dark:via-70% dark:to-[#c45f00] dark:to-90% max-w-full overflow-x-hidden">
     <div class="flex flex-col items-center text-center">
       <div class="title-container text-[500%]">
         {{ title }}
@@ -24,7 +25,8 @@
     <!-- rotation images -->
     <div class="parent-food">
       <div class="leftfood-container flex mt-[20vh] mx-[4vw] justify-between items-center gap-[10vw]">
-        <img src="/public/leftovers.png" alt="Rotating Pizza" class="left-rotating-food w-[clamp(300px,30vw,400px)] h-auto animate-spin-slow">
+        <img
+          src="/public/leftovers.png" class="left-rotating-food w-[clamp(300px,30vw,400px)] h-auto animate-spin-slow">
         <div class="text-[clamp(10px,5vw,50px)]">
           <br>DO YOU HAVE ANY<br>
           <b>LEFTOVER INGREDIENTS?</b>
@@ -35,7 +37,8 @@
           <br>REPLATE THEM TO<br>
           <b>TASTY MEALS OF YOUR CHOICE</b>
         </div>
-        <img src="/public/pizza.png" alt="Rotating chicken dish" class="right-rotating-food w-[clamp(300px,30vw,400px)] h-auto animate-spin-reverse-slow">
+        <img
+          src="/public/pizza.png" class="right-rotating-food w-[clamp(300px,30vw,400px)] h-auto animate-spin-reverse-slow">
       </div>
     </div>
   </div>
@@ -87,16 +90,29 @@ const items = [
 
 /* Custom spin animations for slow and reverse spin */
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 @keyframes spin-reverse-slow {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
 }
+
 .animate-spin-slow {
   animation: spin-slow 15s linear infinite;
 }
+
 .animate-spin-reverse-slow {
   animation: spin-reverse-slow 15s linear infinite;
 }
