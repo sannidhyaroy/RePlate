@@ -65,10 +65,9 @@ In this context, RePlate emerges as a smart solution to tackle household food wa
 ---
 
 
-## Deploy Link
+## Hosted Version
 
-*RePlate has been deployted on Netlify  
-*Link to the app   :   [RePlate]()
+*RePlate has been deployed on Netlify at [replate.thenoton.com](https://replate.thenoton.com)*
 
 
 ---
