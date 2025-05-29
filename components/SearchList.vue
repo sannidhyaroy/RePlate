@@ -17,9 +17,6 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient();
 const toast = useToast();
-const items = ref([]);
-const loading = ref(true);
-const selectedTab = ref('time');
 
 const props = defineProps<{
     searchFunction: string;
@@ -27,6 +24,10 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits(['close-modal']);
+
+const items = ref([]);
+const loading = ref(true);
+const selectedTab = ref(props.searchFunction === 'search_recipes_optimal' ? 'ingredients' : 'time');
 
 const tabItems = ref<TabsItem[]>([
     {
