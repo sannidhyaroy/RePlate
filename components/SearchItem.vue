@@ -29,9 +29,9 @@
                     <p class="text-xs">Total Time</p>
                 </div>
                 <div class="grid grid-cols-3 gap-4 text-center">
-                    <h3 class="font-semibold">{{ item.preparation_time }} minutes</h3>
-                    <h3 class="font-semibold">{{ item.cooking_time }} minutes</h3>
-                    <h3 class="font-semibold">{{ item.total_time }} minutes</h3>
+                    <h3 class="text-2xl font-semibold">{{ item.preparation_time }} mins</h3>
+                    <h3 class="text-2xl font-semibold">{{ item.cooking_time }} mins</h3>
+                    <h3 class="text-2xl font-semibold">{{ item.total_time }} mins</h3>
                 </div>
             </template>
         </UCard>
