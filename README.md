@@ -66,6 +66,8 @@ In this context, RePlate emerges as a smart solution to tackle household food wa
 
 *RePlate has been deployed on Netlify at [replate.thenoton.com](https://replate.thenoton.com)*
 
+**`NOTE`**: This project uses [Supabase](https://supabase.com) for [authentication](https://supabase.com/auth) and [database](https://supabase.com/database)([PostgreSQL](https://www.postgresql.org)) services. If you encounter issues with authentication or database-related functions, please visit [Supabase Status](https://status.supabase.com) to check if Supabase services are fully operational. Also, Supabase by default imposes rate-limits to 2 emails/hour, unless increased manually. Note that we are not affiliated with Supabase, and any outages or disruptions related to Supabase are beyond our control.
+
 ---
 
 
