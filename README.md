@@ -16,12 +16,10 @@ Refill your plate with LeftOvers 🍽️
    - [Solution](#solution)
 2. [Tech Stack](#tech-stack)
 3. [Hosted Instance](#hosted-instance)
-4. [How to Run Locally](#how-to-run-locally)
+4. [Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
-   - [Set up Supabase Environment Variables](#supabase-environment-variables)
-   - [Run the development server](#run-the-development-server)
-5. [Project Status & Future Enhancements](#project-status--future-enhancements)
+5. [Roadmap](#roadmap)
 6. [Our Team](#our-team)
 7. [License](#license)
 
@@ -73,7 +71,7 @@ RePlate is deployed to Netlify at [replate.thenoton.com](https://replate.thenoto
 
 ---
 
-## How to Run Locally?
+## Getting Started
 
 ### Prerequisites
 
@@ -82,12 +80,12 @@ Ensure you have the following installed:
 - [Node.js](https://nodejs.org/) (v16 or later)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-### Installations
+### Installation
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/sannidhyaroy/Ankaa.git
-    cd Ankaa
+    git clone https://github.com/sannidhyaroy/RePlate.git
+    cd RePlate
     ```
 2.  Install node modules:
     ```bash
@@ -107,9 +105,9 @@ Ensure you have the following installed:
     ```bash
     cp -v .env.example .env
     ```
-    - Paste the Project URL from the above step into `VITE_SUPABASE_URL`.
-    - Paste your anon key from the above step into `VITE_SUPABASE_ANON_KEY`.
-    - It's recommended to lockdown file permissions of your environment file, as it contains confidential information like api keys. On a bash shell, you can use the following command:
+    - Paste the Project URL from the above step into `SUPABASE_URL`.
+    - Paste your anon key from the above step into `SUPABASE_KEY`.
+    - It's recommended to lockdown file permissions of your environment file, as it contains confidential information like api keys. On a POSIX-compliant shells (like bash or zsh), you can use the following command:
       ```bash
       chmod 600 .env
       ```
@@ -120,33 +118,36 @@ Ensure you have the following installed:
       ```bash
       npm run dev
       ```
+    - Open your browser and navigate to `localhost:3000` to see the application in action.
 
 ---
 
-## Project Status and Future Enhancements
+## Roadmap
 
-- #### Current Status ✅
-  - RePlate intelligently suggests recipes along with step-by-step preparation methods using the leftover ingredients available.
-  - It includes a secure authentication and login system to ensure personalized access for each user.
-- #### Future Enhancements 🕒
-  - enhancing UI/UX
-  - proper user profile record
-  - maintain a record of favored dishes for quick future access for users
-  - Tracks user preferences and choices to recommend custom-tailored recipes
-  - adding premium features like diet-planning, pantry management, etc
+#### Current Status
+
+- RePlate uses intelligent algorithm to suggest recipes with step-by-step preparation methods using the leftover ingredients available along with preparation time, cooking time, cuisine type, and various other in-depth metadata.
+- It includes a secure authentication and login system to ensure personalized access for each user.
+
+#### Future Enhancements
+
+- Seperate `profiles` table in PostgreSQL to store user preferences, choices, custom recipes and track cooking history.
+- Maintain a record of favorite dishes for quick future access for users
+- Tracking algorithms for user preferences and choices to recommend custom-tailored recipes.
+- Integrate with APIs for integrated features like diet-planning, pantry management, etc.
 
 ---
 
 ## Our Team
 
-The contributors of this project are :
+RePlate is a collaborative effort by a team of passionate developers and designers:
 
-- **Sannidhya Roy** [![GitHub](https://img.shields.io/badge/--black?style=flat-square&logo=github&logoColor=white)](https://github.com/sannidhyaroy/)  
-  _handling the frontend,backend development, authentication and deployment_
-- **Anshul Ivan Ekka** [![GitHub](https://img.shields.io/badge/--black?style=flat-square&logo=github&logoColor=white)](https://github.com/Anxhul10/)  
-  _handling the frontend development_
-- **Soumyadeep Dutta** [![GitHub](https://img.shields.io/badge/--black?style=flat-square&logo=github&logoColor=white)](https://github.com/SimpleMan05/)  
-  _handling the ideation, design and management_
+- **Sannidhya Roy** [![GitHub](https://img.shields.io/badge/--black?style=flat-square&logo=github&logoColor=white)](https://github.com/sannidhyaroy)  
+  _frontend, backend, authentication, database, deployment and project management_
+- **Anshul Ivan Ekka** [![GitHub](https://img.shields.io/badge/--black?style=flat-square&logo=github&logoColor=white)](https://github.com/Anxhul10)  
+  _frontend development_
+- **Soumyadeep Dutta** [![GitHub](https://img.shields.io/badge/--black?style=flat-square&logo=github&logoColor=white)](https://github.com/SimpleMan05)  
+  _ideation, design and documentation_
 
 ---
 
