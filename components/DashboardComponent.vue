@@ -10,6 +10,22 @@
                     View Profile
                 </UButton>
             </UCard>
+            <UCard v-if="!hideRandomRecipes" class="p-4" variant="outline">
+                <h2 class="text-2xl font-bold">Recipes for you to crave</h2>
+                <UCarousel
+                    v-if="!loading" v-slot="{ item }" loop wheel-gestures auto-scroll :items="recipeData"
+                    :ui="{ item: 'basis-1/4' }" class="p-4">
+                    <UCard
+                        class="cursor-pointer h-50 m-1" variant="subtle" @click="$router.push(`/recipe/${item[0].id}`)">
+                        <template #header>
+                            <h2 class="text-2xl font-bold">Recipe #{{ item[0].id }}</h2>
+                        </template>
+                        <p>{{ item[0].name }}</p>
+                    </UCard>
+                </UCarousel>
+                <USkeleton v-else class="w-full h-50 m-4" />
+            </UCard>
+            <br>
             <UCard class="p-4" variant="subtle">
                 <h2 class="text-2xl font-bold mb-4">RePlate your leftovers</h2>
                 <p class="mb-4">You can reduce your food wastage by searching for recipes that utilize your leftovers.
@@ -23,7 +39,46 @@
 </template>
 
 <script lang="ts" setup>
+const supabase = useSupabaseClient();
+const loading = ref(true);
+const hideRandomRecipes = ref(false);
+const recipe = {
+    minId: 1,
+    maxId: 6871,
+    randomRecipeCount: 10,
+    random() {
+        return Math.floor(Math.random() * (this.maxId - this.minId) + this.minId);
+    }
+};
 
+const recipeData = ref([]);
+
+const showErrorAlert = (message) => {
+    toast.add({
+        title: 'Something went wrong!',
+        description: message,
+        color: 'error',
+        icon: 'i-lucide-badge-alert'
+    });
+}
+
+const fetchRecipe = async (Id) => {
+    try {
+        const { data, error } = await supabase.rpc('get_recipe_by_id', { recipe_id: Id });
+        if (error) throw error;
+        if (data && data.length > 0) {
+            loading.value = false;
+            return data;
+        }
+    } catch (error) {
+        showErrorAlert(error.message || 'Failed to fetch random recipes');
+        hideRandomRecipes.value = true;
+    }
+}
+onMounted(async () => {
+    for (let i = 0; i < recipe.randomRecipeCount; i++) {
+        const result = await fetchRecipe(recipe.random());
+        recipeData.value.push(result);
+    }
+});
 </script>
-
-<style></style>
