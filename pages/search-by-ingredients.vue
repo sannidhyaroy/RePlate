@@ -31,6 +31,7 @@
 </template>
 
 <script lang="ts" setup>
+const supabase = useSupabaseClient();
 const modalOpen = ref(false);
 const selectedIngredients = ref([]);
 const options = ref([]);
@@ -57,6 +58,20 @@ const addIngredient = (newIngredient) => {
     selectedIngredients.value.push(ingredient);
     options.value.push(ingredient);
 };
+
+const fetchIngredientOptions = async () => {
+    const { data, error } = await supabase.rpc('fetch_ingredients');
+    if (!error && data) {
+        options.value = data.map(item => ({
+            name: item.ingredient,
+            id: item.ingredient.substring(0, 2) + Math.floor(Math.random() * 10000000),
+        }));
+    }
+};
+
+onMounted(async () => {
+    fetchIngredientOptions();
+});
 
 </script>
 

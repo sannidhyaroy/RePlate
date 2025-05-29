@@ -27,6 +27,19 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql STABLE;
 
+-- RPC: Get all unique ingredients from all recipes
+CREATE OR REPLACE FUNCTION fetch_ingredients()
+RETURNS TABLE (
+    ingredient text
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT DISTINCT trim(both from regexp_replace(ing, '\s*(–|-).*$', '', 'g')) AS ingredient
+    FROM recipes, unnest(ingredients_array) AS ing
+    WHERE ingredients_array IS NOT NULL;
+END;
+$$ LANGUAGE plpgsql STABLE;
+
 -- RPC: Exact match search for recipes with all specified ingredients
 CREATE OR REPLACE FUNCTION search_recipes_exact(input_ingredients text[])
 RETURNS TABLE (
@@ -42,7 +55,7 @@ DECLARE
     query_str text;
 BEGIN
     -- Join ingredients with ' | ' for exact match, replacing spaces with '+' in each ingredient
-    query_str := array_to_string(ARRAY(SELECT replace(i, ' ', '+') FROM unnest(input_ingredients) AS i), ' & ');
+    query_str := array_to_string(ARRAY(SELECT replace(regexp_replace(i, '[()]', '', 'g'), ' ', '+') FROM unnest(input_ingredients) AS i), ' & ');
     RETURN QUERY
     SELECT recipes.id, recipes.name, recipes.ingredients_array, recipes.preparation_time, recipes.cooking_time, recipes.total_time, ts_rank(ingredients_tsvector, to_tsquery('english', query_str))
     FROM recipes
@@ -66,7 +79,7 @@ DECLARE
     query_str text;
 BEGIN
     -- Join ingredients with ' | ' for fuzzy match, replacing spaces with '+' in each ingredient
-    query_str := array_to_string(ARRAY(SELECT replace(i, ' ', '+') FROM unnest(input_ingredients) AS i), ' | ');
+    query_str := array_to_string(ARRAY(SELECT replace(regexp_replace(i, '[()]', '', 'g'), ' ', '+') FROM unnest(input_ingredients) AS i), ' & ');
     RETURN QUERY
     SELECT recipes.id, recipes.name, recipes.ingredients_array, recipes.preparation_time, recipes.cooking_time, recipes.total_time, ts_rank(ingredients_tsvector, to_tsquery('english', query_str))
     FROM recipes
@@ -93,7 +106,7 @@ DECLARE
     query_str text;
 BEGIN
     -- Join ingredients with ' | ' for fuzzy match, replacing spaces with '+' in each ingredient
-    query_str := array_to_string(ARRAY(SELECT replace(i, ' ', '+') FROM unnest(input_ingredients) AS i), ' | ');
+    query_str := array_to_string(ARRAY(SELECT replace(regexp_replace(i, '[()]', '', 'g'), ' ', '+') FROM unnest(input_ingredients) AS i), ' & ');
     RETURN QUERY
     WITH intersections AS (
       SELECT
