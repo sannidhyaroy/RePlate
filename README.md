@@ -20,6 +20,8 @@ Refill your plate with LeftOvers 🍽️
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
 5. [Roadmap](#roadmap)
+   - [Current Status](#current-status)
+   - [Future Enhancements](#future-enhancements)
 6. [Our Team](#our-team)
 7. [License](#license)
 
@@ -45,19 +47,19 @@ In this context, RePlate emerges as a smart solution to tackle household food wa
 
 ## Tech Stack
 
-#### FRONTEND
+#### Frontend
 
 [![Nuxt.js](https://img.shields.io/badge/Nuxt.js-00DC82?style=flat-square&logo=nuxt&logoColor=white)](https://nuxt.com/) [![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white)](https://vuejs.org/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![Nuxt UI](https://img.shields.io/badge/Nuxt_UI-0275d8?style=flat-square&logo=nuxt)](https://ui.nuxt.com/)
 
-#### BACKEND
+#### Backend & Auth
 
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com/)
 
-#### DATABASE
+#### Database
 
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 
-#### DEPLOY
+#### Deployment
 
 [![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://www.netlify.com/)
 
