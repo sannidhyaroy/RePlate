@@ -4,7 +4,12 @@
             <USkeleton v-for="n in 3" :key="n" class="w-full h-36" />
         </template>
         <template v-else>
-            <SearchItem v-for="item in items" :key="item.id" :item="item" class="search-item" />
+            <UTabs
+                v-if="searchFunction === 'search_recipes_optimal'" v-model="selectedTab" :items="tabItems"
+                class="w-full" />
+            <SearchItem
+                v-for="item in items" :key="item.id" :item="item" :selected-tab="selectedTab"
+                class="search-item w-full" />
         </template>
     </div>
 </template>
@@ -14,6 +19,7 @@ const supabase = useSupabaseClient();
 const toast = useToast();
 const items = ref([]);
 const loading = ref(true);
+const selectedTab = ref('time');
 
 const props = defineProps<{
     searchFunction: string;
@@ -21,6 +27,19 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits(['close-modal']);
+
+const tabItems = ref<TabsItem[]>([
+    {
+        label: 'Ingredients',
+        icon: 'i-lucide-shopping-basket',
+        value: 'ingredients',
+    },
+    {
+        label: 'Time',
+        icon: 'i-lucide-hourglass',
+        value: 'time',
+    }
+]);
 
 const fetchItems = async () => {
     try {

@@ -10,7 +10,19 @@
                     </div>
                 </div>
             </template>
-            <template #footer>
+            <template v-if="selectedTab === 'ingredients'" #footer>
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <p class="text-xs">Matching Ingredients</p>
+                    <p class="text-xs">Extra Ingredients</p>
+                    <p class="text-xs">Total Ingredients</p>
+                </div>
+                <div class="grid grid-cols-3 gap-4 text-center mt-1">
+                    <h3 class="text-2xl font-semibold">{{ item.matching_ingredients }}</h3>
+                    <h3 class="text-2xl font-semibold">{{ item.extra_ingredients }}</h3>
+                    <h3 class="text-2xl font-semibold">{{ item.total_ingredients }}</h3>
+                </div>
+            </template>
+            <template v-else #footer>
                 <div class="grid grid-cols-3 gap-4 text-center">
                     <p class="text-xs">Preparation Time</p>
                     <p class="text-xs">Cooking Time</p>
@@ -27,5 +39,5 @@
 </template>
 
 <script lang="ts" setup>
-defineProps<{ item }>();
+defineProps<{ item, selectedTab }>();
 </script>
