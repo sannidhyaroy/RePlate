@@ -1,6 +1,5 @@
- ![App Logo](https://github.com/sannidhyaroy/RePlate/blob/main/public/logo.png) 
 # RePlate
-### _ReFill your plate with LeftOvers_ 🍽️
+### _Refill your plate with LeftOvers_ 🍽️
 
 
 RePlate is a smart web application designed to help users manage their food waste by analyzing recipes and suggesting ways to use leftover ingredients. It features a user-friendly interface, a recipe database, and integration with suitable algorithm to provide users the exact solution to their problem.
