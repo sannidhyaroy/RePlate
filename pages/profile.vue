@@ -15,8 +15,8 @@
             <!-- Name, Email and Buttons -->
             <div class="flex flex-col gap-2 justify-center md:justify-start">
                 <div>
-                    <h2 class="text-xl font-bold">{{ name || 'name here' }}</h2>
-                    <p class="text-gray-400">{{ email || 'email here' }}</p>
+                    <h2 class="text-xl font-bold">{{ profile.name || 'name here' }}</h2>
+                    <p class="text-gray-400">{{ profile.email || 'email here' }}</p>
                 </div>
                 <div class="flex gap-4">
                     <UButton variant="subtle" @click="changeDetails">Change Details</UButton>
@@ -43,7 +43,7 @@
             <USeparator class="my-4" color="primary" />
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <UCard
-                    v-for="(item, index) in cookingHistory" :key="index"
+                    v-for="(item, index) in profile.cookingHistory" :key="index"
                     class="flex items-center justify-center h-28 transition-all duration-100 hover:border-2 hover:border-green-400">
                     <p>{{ item.name }}</p>
                 </UCard>
@@ -53,32 +53,29 @@
 </template>
 
 <script lang="ts" setup>
-const name = ref('')
-const email = ref('')
-const cooked = ref(0)
-const contributed = ref(0)
-const animatedCooked = ref(0)
-const animatedContributed = ref(0)
-const cookingHistory = ref<{ name: string }[]>([])
+const supabase = useSupabaseClient();
+const user = useSupabaseUser();
 
-// Simulated backend fetch
-onMounted(() => {
-    // Simulate Supabase fetch
-    name.value = 'Your Name'
-    email.value = 'you@example.com'
-    cooked.value = 45
-    contributed.value = 12
-    cookingHistory.value = [
+const profile = ref({
+    name: user.value?.user_metadata?.display_name || '',
+    email: user.value?.email || '',
+    cooked: user.value?.user_metadata?.cooked || 70,
+    contributed: user.value?.user_metadata?.contributed || 45,
+    cookingHistory: [
         { name: 'Pasta' },
         { name: 'Salad' },
         { name: 'Pizza' },
         { name: 'Soup' },
         { name: 'Chowmein' }
     ]
+});
+const animatedCooked = ref(0);
+const animatedContributed = ref(0);
 
-    animateCount(cooked.value, animatedCooked)
-    animateCount(contributed.value, animatedContributed)
-})
+onMounted(() => {
+    animateCount(profile.value.cooked, animatedCooked)
+    animateCount(profile.value.contributed, animatedContributed)
+});
 
 function animateCount(target: number, refVar: { value: number }) {
     let count = 0
