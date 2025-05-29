@@ -9,9 +9,6 @@
         <b>{{ tagline }}</b>
       </div>
 
-      <div class="about-container">
-        <p>{{ about }}</p>
-      </div>
     </div>
 
     <!-- auth buttons-->
@@ -69,7 +66,6 @@
 defineProps<{
   title: string;
   tagline: string;
-  about: string;
 }>();
 const items = [
   'https://images.unsplash.com/photo-1560684352-8497838a2229?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -140,14 +136,6 @@ const items = [
   to {
     width: 25.6ch;
   }
-}
-
-.about-container {
-  font-size: clamp(1rem, 1.5vw, 1.5rem);
-  padding: 5%;
-  margin-left: 10px;
-  margin-right: 10px;
-  /* background-image: linear-gradient(#120217,#240b2b); */
 }
 
 /* images */
