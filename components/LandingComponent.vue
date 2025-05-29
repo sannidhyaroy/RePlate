@@ -23,7 +23,7 @@
 
     <div>
       <UCarousel v-slot="{ item }" loop wheel-gestures :items="items" :ui="{ item: 'basis-1/6' }" auto-scroll>
-        <img :src="item" width="200" height="234" class="rounded-lg">
+        <img :src="item" class="rounded-lg object-cover carousel-img-fixed">
       </UCarousel>
     </div>
 
@@ -126,6 +126,14 @@ const items = [
   margin-right: 4vw;
   height: 60vh;
   gap: 10vw;
+}
+
+.carousel-img-fixed {
+  height: 220px;
+  width: 200px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 
 @keyframes leftrotate {
