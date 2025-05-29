@@ -62,6 +62,8 @@ const addIngredient = (newIngredient) => {
 
 <style>
 /* Vue Multiselect border radius */
+@import 'assets/css/vue-multiselect.css';
+
 .multiselect__tags {
     border-radius: calc(var(--ui-radius) * 1.5) 0 0 calc(var(--ui-radius) * 1.5);
 }
